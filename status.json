@@ -1,0 +1,588 @@
+{
+  "proyek": "Candidate Tracker → ATS",
+  "diperbarui": "2026-10-08T00:00:00+07:00",
+  "snapshotLabel": "W2 Okt 2026 · snapshot 8 Okt (jam sumber tidak tersedia)",
+  "diperbaruiOleh": "Codex · bersumber catatan Claude dan repo sampai 8196ec9",
+  "ringkasanStatus": {
+    "judul": "Berjalan lokal; belum dirilis online untuk HR",
+    "teks": "29 arsip asli tersimpan, 105 siap, 76 tambahan belum disimpan. Sync asli manual. Tidak ada deployment atau jadwal aktif pada fitur baru."
+  },
+  "ringkasan": "Fondasi dan pilot sudah menghasilkan alur yang bisa dicoba. Fokus berikutnya pemeriksaan akses online dalam Modul 1.5; perluasan 76 ditunda. M2–M8 di bawah diperinci per hasil, bukan digabung satu baris.",
+  "yangBisaDitunjukkan": [
+    "Preview, sync manual, bandingkan, berhenti/lanjutkan di aplikasi lokal.",
+    "29 arsip asli dibandingkan ke Sheet; pipeline aktif tidak otomatis bertambah.",
+    "Konfirmasi mapping dari UI memengaruhi kesiapan; status proses kosong tetap null dan perlu review.",
+    "Preview interaktif terpisah memakai example.test, tidak terhubung ke ATS/Sheet/database."
+  ],
+  "statusLabel": {
+    "blocked": "Terhambat",
+    "in_progress": "Sedang dikerjakan",
+    "not_started": "Belum dikerjakan",
+    "done_dev_tested_local": "Kode + test lulus (belum bukti langsung)",
+    "verified_local": "Terbukti lokal (belum online)",
+    "verified_live": "Terbukti online",
+    "released": "Dipakai sehari-hari"
+  },
+  "statusOrder": [
+    "blocked",
+    "in_progress",
+    "not_started",
+    "done_dev_tested_local",
+    "verified_local",
+    "verified_live",
+    "released"
+  ],
+  "statusDefinisi": {
+    "blocked": "menunggu keputusan/akses/data",
+    "in_progress": "ada implementasi aktif yang tercatat",
+    "not_started": "scope belum dibangun/ditutup",
+    "done_dev_tested_local": "kode/test ada, runtime belum terbukti",
+    "verified_local": "bukti runtime lokal dilaporkan/tercatat; tidak sama dengan live online",
+    "verified_live": "bukti di lingkungan online target",
+    "released": "rilis dipakai HR sehari-hari"
+  },
+  "hasil": [
+    {
+      "id": "ats-1",
+      "kode": "M1",
+      "nama": "Tracker lintas role + periode bulanan",
+      "status": "verified_local",
+      "kelompok": "Fondasi & sync",
+      "manfaat": "Nama/email, role, PIC, source, status, next action, bulan berjalan dan carry-over kandidat lama.",
+      "minggu": "W2 Sep 2026",
+      "catatan": "Approval historis d4e119b; bukan uji ulang sesi report.",
+      "bukti": []
+    },
+    {
+      "id": "ats-2",
+      "kode": "M1",
+      "nama": "Filter, quick view & pagination",
+      "status": "verified_local",
+      "kelompok": "Fondasi & sync",
+      "manfaat": "Cari kandidat menurut role/PIC/source/status; quick view interview/offering/selesai; 100 per halaman.",
+      "minggu": "W2 Sep 2026",
+      "catatan": "",
+      "bukti": []
+    },
+    {
+      "id": "ats-3",
+      "kode": "M1",
+      "nama": "Bulk shortlisted + riwayat kandidat",
+      "status": "verified_local",
+      "kelompok": "Fondasi & sync",
+      "manfaat": "Paste kandidat, validasi email dan duplikat, cek riwayat role/episode sebelum penyimpanan.",
+      "minggu": "W2 Sep 2026",
+      "catatan": "",
+      "bukti": []
+    },
+    {
+      "id": "ats-4",
+      "kode": "M1",
+      "nama": "Salin nama/email, PIC & mobile",
+      "status": "verified_local",
+      "kelompok": "Fondasi & sync",
+      "manfaat": "Copy untuk kebutuhan HR; PIC canonical dan alias Thisya/Lathisya; layar desktop/mobile.",
+      "minggu": "W2 Sep 2026",
+      "catatan": "",
+      "bukti": []
+    },
+    {
+      "id": "ats-5",
+      "kode": "M1.5A",
+      "nama": "Pembaca Google Sheet read-only & dry run",
+      "status": "verified_local",
+      "kelompok": "Fondasi & sync",
+      "manfaat": "Lihat data sumber dan hasil validasi tanpa menulis Sheet.",
+      "minggu": "W2 Sep 2026",
+      "catatan": "Jumlah terbaru 4.439, bukan baseline lama 4.080.",
+      "bukti": []
+    },
+    {
+      "id": "ats-6",
+      "kode": "M1.5B",
+      "nama": "13 Status HR + kompatibilitas data lama",
+      "status": "verified_local",
+      "kelompok": "Fondasi & sync",
+      "manfaat": "Ongoing/Hired/Skip/Cancelled terpisah, alias historis dikenali tanpa menulis ulang.",
+      "minggu": "W2 Sep 2026",
+      "catatan": "8417d3d / 167dcce approved sebelumnya.",
+      "bukti": []
+    },
+    {
+      "id": "ats-7",
+      "kode": "M1.5B",
+      "nama": "Outcome, alasan & draft role",
+      "status": "verified_local",
+      "kelompok": "Fondasi & sync",
+      "manfaat": "Status, kategori alasan, alasan spesifik, catatan detail dan raw nilai dipisahkan.",
+      "minggu": "W2 Sep 2026",
+      "catatan": "",
+      "bukti": []
+    },
+    {
+      "id": "ats-8",
+      "kode": "M1.5C",
+      "nama": "Database uji terpisah dari production",
+      "status": "verified_local",
+      "kelompok": "Fondasi & sync",
+      "manfaat": "Uji tulis tanpa mengubah kandidat ATS operasional.",
+      "minggu": "W4 Sep 2026",
+      "catatan": "7f595c1; Docker Engine/WSL + Supabase lokal.",
+      "bukti": []
+    },
+    {
+      "id": "ats-9",
+      "kode": "M1.5C",
+      "nama": "Identitas stabil, pending review & retry",
+      "status": "verified_local",
+      "kelompok": "Fondasi & sync",
+      "manfaat": "Perubahan ambigu ditahan; status/nama tidak menempel pada orang lain akibat baris tertukar.",
+      "minggu": "W4 Sep – W1 Okt 2026",
+      "catatan": "Bukti perubahan sumber memakai data contoh.",
+      "bukti": []
+    },
+    {
+      "id": "ats-10",
+      "kode": "M1.5C",
+      "nama": "Pilot asli: 10 → 29 arsip kandidat",
+      "status": "verified_local",
+      "kelompok": "Fondasi & sync",
+      "manfaat": "Data lama disimpan terpisah dari pipeline; daftar dibekukan dan dibandingkan dengan Sheet.",
+      "minggu": "W1 Okt 2026",
+      "catatan": "46e5a91; 29 tersimpan, bukan 105.",
+      "bukti": []
+    },
+    {
+      "id": "ats-11",
+      "kode": "M1.5",
+      "nama": "Sync manual, preview & bandingkan",
+      "status": "verified_local",
+      "kelompok": "Fondasi & sync",
+      "manfaat": "Baca → preview tanpa tulis → refresh → rekonsiliasi; pengulangan tidak menggandakan.",
+      "minggu": "W1 Okt 2026",
+      "catatan": "2f4d363 / 6425268. Manual ≠ otomatis.",
+      "bukti": [
+        {
+          "file": "assets/sync-contoh-3-sehat.png",
+          "ket": "Bukti checkpoint data contoh, bukan kandidat asli."
+        }
+      ]
+    },
+    {
+      "id": "ats-12",
+      "kode": "M1.5",
+      "nama": "Berhenti/lanjutkan, lock & penjaga massal",
+      "status": "verified_local",
+      "kelompok": "Fondasi & sync",
+      "manfaat": "Hindari tumpang tindih penulis; penahanan saat sumber menyusut/ambigu atau gagal berulang.",
+      "minggu": "W1 Okt 2026",
+      "catatan": "Bukti race database + fixture; bukan memaksa perubahan Sheet asli.",
+      "bukti": []
+    },
+    {
+      "id": "ats-13",
+      "kode": "M1.5B",
+      "nama": "Konfirmasi mapping UI → server → kesiapan",
+      "status": "verified_local",
+      "kelompok": "Fondasi & sync",
+      "manfaat": "Keputusan HR yang dikonfirmasi terbaca oleh penentu kesiapan; draft tidak otomatis final.",
+      "minggu": "W1 Okt 2026",
+      "catatan": "263139c; alur nyata diuji dengan sumber contoh.",
+      "bukti": []
+    },
+    {
+      "id": "ats-14",
+      "kode": "M1.5B",
+      "nama": "Status role terpisah dari identitas mapping",
+      "status": "verified_local",
+      "kelompok": "Fondasi & sync",
+      "manfaat": "Open/Closed/Belum ditentukan tidak memblokir arsip; mapping ambigu tetap memblokir.",
+      "minggu": "W2 Okt 2026",
+      "catatan": "3d2c8dc, 8 Okt.",
+      "bukti": [
+        {
+          "file": "assets/alur-status-role-ui-contoh.png",
+          "ket": "UI contoh: status role dan kesiapan arsip."
+        }
+      ]
+    },
+    {
+      "id": "ats-15",
+      "kode": "M1.5B",
+      "nama": "Alias/source terkonfirmasi: siap 37 → 105",
+      "status": "verified_local",
+      "kelompok": "Fondasi & sync",
+      "manfaat": "8 konfirmasi lokal baru; 76 usulan tambahan belum disimpan.",
+      "minggu": "W2 Okt 2026",
+      "catatan": "8196ec9, 8 Okt. 29 arsip tetap.",
+      "bukti": []
+    },
+    {
+      "id": "ats-16",
+      "kode": "M1.5B",
+      "nama": "Mapping role/status historis yang tersisa",
+      "status": "blocked",
+      "kelompok": "Fondasi & sync",
+      "manfaat": "Baris belum siap tetap ditahan; 11 identitas role belum dibandingkan ke production; alasan ambigu tidak ditebak.",
+      "minggu": "Target belum ditetapkan",
+      "catatan": "4.334 belum siap; 3.298 status proses kosong, alasan dapat overlap.",
+      "bukti": []
+    },
+    {
+      "id": "ats-17",
+      "kode": "M1.5B-3",
+      "nama": "Import Review UX lengkap",
+      "status": "not_started",
+      "kelompok": "Fondasi & sync",
+      "manfaat": "Quick view periode/pre-2026/masalah, filter tiap kolom, pagination seluruh hasil, kolom Kandidat dan mobile.",
+      "minggu": "Target belum ditetapkan",
+      "catatan": "Beberapa label/panel sudah dibangun, tetapi paket UX penuh belum diklaim selesai.",
+      "bukti": []
+    },
+    {
+      "id": "ats-18",
+      "kode": "M1.5",
+      "nama": "Perluasan 76 kandidat: 29 → 105 arsip",
+      "status": "not_started",
+      "kelompok": "Fondasi & sync",
+      "manfaat": "Perluasan hanya daftar yang disetujui, identitas+mapping dibekukan dan diverifikasi ulang.",
+      "minggu": "Ditunda · keputusan W2 Okt 2026",
+      "catatan": "Tidak ada kandidat tambahan tersimpan.",
+      "bukti": []
+    },
+    {
+      "id": "ats-19",
+      "kode": "M1.5",
+      "nama": "Pemeriksaan jalur online + rollout aman",
+      "status": "not_started",
+      "kelompok": "Fondasi & sync",
+      "manfaat": "Cek hosting, database terpisah, login HR, biaya, akses dan pemulihan sebelum implementasi online.",
+      "minggu": "Berikutnya · target minggu belum ditetapkan",
+      "catatan": "Pemeriksaan baca-saja ditugaskan; belum ada hasil. Urutan dibandingkan roadmap, bukan otomatis berubah.",
+      "bukti": []
+    },
+    {
+      "id": "ats-20",
+      "kode": "M2",
+      "nama": "Aktivitas shortlist & breakdown PIC/role/source",
+      "status": "not_started",
+      "kelompok": "Workflow lanjutan",
+      "manfaat": "Shortlisted harian/mingguan/per PIC/per role/source; tanpa target harian kaku yang menghukum PIC.",
+      "minggu": "Target minggu belum ditetapkan",
+      "catatan": "Scope dari RENCANA-MODUL-LENGKAP.md; beberapa fitur ATS existing mungkin ada, integrasi target modul ini belum terbukti.",
+      "bukti": []
+    },
+    {
+      "id": "ats-21",
+      "kode": "M2",
+      "nama": "Pipeline & outcome dashboard",
+      "status": "not_started",
+      "kelompok": "Workflow lanjutan",
+      "manfaat": "Aktif, On Hold, interview, offering, Hired, Skip, Cancelled ditampilkan terpisah.",
+      "minggu": "Target minggu belum ditetapkan",
+      "catatan": "Scope dari RENCANA-MODUL-LENGKAP.md; beberapa fitur ATS existing mungkin ada, integrasi target modul ini belum terbukti.",
+      "bukti": []
+    },
+    {
+      "id": "ats-22",
+      "kode": "M2",
+      "nama": "Lead time dari Stage Events",
+      "status": "not_started",
+      "kelompok": "Workflow lanjutan",
+      "manfaat": "Waktu screening → kirim → submit → review → user → interview → keputusan → offering; bukan tanggal AI scoring.",
+      "minggu": "Target minggu belum ditetapkan",
+      "catatan": "Scope dari RENCANA-MODUL-LENGKAP.md; beberapa fitur ATS existing mungkin ada, integrasi target modul ini belum terbukti.",
+      "bukti": []
+    },
+    {
+      "id": "ats-23",
+      "kode": "M2",
+      "nama": "Bottleneck & analisis alasan",
+      "status": "not_started",
+      "kelompok": "Workflow lanjutan",
+      "manfaat": "Kandidat lama tidak bergerak, tahap terlambat, respons user, drop-off dan reason group per role.",
+      "minggu": "Target minggu belum ditetapkan",
+      "catatan": "Scope dari RENCANA-MODUL-LENGKAP.md; beberapa fitur ATS existing mungkin ada, integrasi target modul ini belum terbukti.",
+      "bukti": []
+    },
+    {
+      "id": "ats-24",
+      "kode": "M3",
+      "nama": "Action list HR harian",
+      "status": "not_started",
+      "kelompok": "Workflow lanjutan",
+      "manfaat": "Belum kirim assessment, submission belum lengkap, review menunggu, overdue, keputusan user dan offering follow-up.",
+      "minggu": "Target minggu belum ditetapkan",
+      "catatan": "Scope dari RENCANA-MODUL-LENGKAP.md; beberapa fitur ATS existing mungkin ada, integrasi target modul ini belum terbukti.",
+      "bukti": []
+    },
+    {
+      "id": "ats-25",
+      "kode": "M3",
+      "nama": "Deadline fleksibel per role/kandidat",
+      "status": "not_started",
+      "kelompok": "Workflow lanjutan",
+      "manfaat": "Pilihan 2–5 hari atau custom; default role bisa diubah per kandidat.",
+      "minggu": "Target minggu belum ditetapkan",
+      "catatan": "Scope dari RENCANA-MODUL-LENGKAP.md; beberapa fitur ATS existing mungkin ada, integrasi target modul ini belum terbukti.",
+      "bukti": []
+    },
+    {
+      "id": "ats-26",
+      "kode": "M3",
+      "nama": "Follow-up & keputusan di luar Atlas",
+      "status": "not_started",
+      "kelompok": "Workflow lanjutan",
+      "manfaat": "Reminder kandidat/user, catatan WhatsApp, tidak merespons, dan keputusan diterima di luar website.",
+      "minggu": "Target minggu belum ditetapkan",
+      "catatan": "Scope dari RENCANA-MODUL-LENGKAP.md; beberapa fitur ATS existing mungkin ada, integrasi target modul ini belum terbukti.",
+      "bukti": []
+    },
+    {
+      "id": "ats-27",
+      "kode": "M4",
+      "nama": "Workflow assessment per role",
+      "status": "not_started",
+      "kelompok": "Workflow lanjutan",
+      "manfaat": "Parallel, semi-sequential, sequential; dengan/tanpa AI scoring; PIC bisa mengubah flow existing.",
+      "minggu": "Target minggu belum ditetapkan",
+      "catatan": "Scope dari RENCANA-MODUL-LENGKAP.md; beberapa fitur ATS existing mungkin ada, integrasi target modul ini belum terbukti.",
+      "bukti": []
+    },
+    {
+      "id": "ats-28",
+      "kode": "M4",
+      "nama": "GForm & pemantauan submission",
+      "status": "not_started",
+      "kelompok": "Workflow lanjutan",
+      "manfaat": "Form berbeda per role; cocokkan normalized email melalui indeks rawdata_from_gform; semua tes wajib harus terkumpul.",
+      "minggu": "Target minggu belum ditetapkan",
+      "catatan": "Scope dari RENCANA-MODUL-LENGKAP.md; beberapa fitur ATS existing mungkin ada, integrasi target modul ini belum terbukti.",
+      "bukti": []
+    },
+    {
+      "id": "ats-29",
+      "kode": "M4",
+      "nama": "Lolos → kirim tahap berikutnya",
+      "status": "not_started",
+      "kelompok": "Workflow lanjutan",
+      "manfaat": "Deadline per tahap; HR memutuskan kelulusan sebelum pengiriman berikutnya.",
+      "minggu": "Target minggu belum ditetapkan",
+      "catatan": "Scope dari RENCANA-MODUL-LENGKAP.md; beberapa fitur ATS existing mungkin ada, integrasi target modul ini belum terbukti.",
+      "bukti": []
+    },
+    {
+      "id": "ats-30",
+      "kode": "M4",
+      "nama": "Email assessment: preview, confirm, log, retry",
+      "status": "not_started",
+      "kelompok": "Workflow lanjutan",
+      "manfaat": "Penerima/template dikonfirmasi; kegagalan tercatat jujur. Butuh inventaris link Form Responses.",
+      "minggu": "Target minggu belum ditetapkan",
+      "catatan": "Scope dari RENCANA-MODUL-LENGKAP.md; beberapa fitur ATS existing mungkin ada, integrasi target modul ini belum terbukti.",
+      "bukti": []
+    },
+    {
+      "id": "ats-31",
+      "kode": "M5",
+      "nama": "Pool activation code & assignment",
+      "status": "not_started",
+      "kelompok": "Workflow lanjutan",
+      "manfaat": "Available/reserved/used/reset-needed, satu code per kandidat, pengembalian hanya jika benar-benar belum dipakai.",
+      "minggu": "Target minggu belum ditetapkan",
+      "catatan": "Scope dari RENCANA-MODUL-LENGKAP.md; beberapa fitur ATS existing mungkin ada, integrasi target modul ini belum terbukti.",
+      "bukti": []
+    },
+    {
+      "id": "ats-32",
+      "kode": "M5",
+      "nama": "Upload & preview PDF psikotes",
+      "status": "not_started",
+      "kelompok": "Workflow lanjutan",
+      "manfaat": "Simpan hasil mentah dengan akses sesuai role HR/User/C-level.",
+      "minggu": "Target minggu belum ditetapkan",
+      "catatan": "Scope dari RENCANA-MODUL-LENGKAP.md; beberapa fitur ATS existing mungkin ada, integrasi target modul ini belum terbukti.",
+      "bukti": []
+    },
+    {
+      "id": "ats-33",
+      "kode": "M5",
+      "nama": "Extractor RCSE & Final/general",
+      "status": "not_started",
+      "kelompok": "Workflow lanjutan",
+      "manfaat": "Ringkasan otomatis plus PDF sumber; download HRD Room tetap manual bila tidak ada integrasi resmi.",
+      "minggu": "Target minggu belum ditetapkan",
+      "catatan": "Scope dari RENCANA-MODUL-LENGKAP.md; beberapa fitur ATS existing mungkin ada, integrasi target modul ini belum terbukti.",
+      "bukti": []
+    },
+    {
+      "id": "ats-34",
+      "kode": "M6",
+      "nama": "Akses HR, Hiring Manager & C-level",
+      "status": "not_started",
+      "kelompok": "Workflow lanjutan",
+      "manfaat": "HR mengubah status; user melihat role yang berwenang dan memberi rekomendasi, tidak mengubah status final.",
+      "minggu": "Target minggu belum ditetapkan",
+      "catatan": "Scope dari RENCANA-MODUL-LENGKAP.md; beberapa fitur ATS existing mungkin ada, integrasi target modul ini belum terbukti.",
+      "bukti": []
+    },
+    {
+      "id": "ats-35",
+      "kode": "M6",
+      "nama": "Review CV, assessment & komentar user",
+      "status": "not_started",
+      "kelompok": "Workflow lanjutan",
+      "manfaat": "Semua bukti/komentar menjadi satu riwayat kandidat sesuai akses.",
+      "minggu": "Target minggu belum ditetapkan",
+      "catatan": "Scope dari RENCANA-MODUL-LENGKAP.md; beberapa fitur ATS existing mungkin ada, integrasi target modul ini belum terbukti.",
+      "bukti": []
+    },
+    {
+      "id": "ats-36",
+      "kode": "M6",
+      "nama": "Panel/final interview & keputusan eksternal",
+      "status": "not_started",
+      "kelompok": "Workflow lanjutan",
+      "manfaat": "Panel HR+user; final jika C-level meminta; HR mencatat keputusan lisan/chat.",
+      "minggu": "Target minggu belum ditetapkan",
+      "catatan": "Scope dari RENCANA-MODUL-LENGKAP.md; beberapa fitur ATS existing mungkin ada, integrasi target modul ini belum terbukti.",
+      "bukti": []
+    },
+    {
+      "id": "ats-37",
+      "kode": "M7",
+      "nama": "Rejection flow & alasan internal",
+      "status": "not_started",
+      "kelompok": "Workflow lanjutan",
+      "manfaat": "Skip → kategori → alasan → catatan internal; pisahkan dari pesan profesional kepada kandidat.",
+      "minggu": "Target minggu belum ditetapkan",
+      "catatan": "Scope dari RENCANA-MODUL-LENGKAP.md; beberapa fitur ATS existing mungkin ada, integrasi target modul ini belum terbukti.",
+      "bukti": []
+    },
+    {
+      "id": "ats-38",
+      "kode": "M7",
+      "nama": "Email rejection: preview → confirm → send → log",
+      "status": "not_started",
+      "kelompok": "Workflow lanjutan",
+      "manfaat": "Template GForm/psikotes/technical/interview; recipient/pengirim/waktu/success/failure, tidak mengirim komentar internal mentah.",
+      "minggu": "Target minggu belum ditetapkan",
+      "catatan": "Scope dari RENCANA-MODUL-LENGKAP.md; beberapa fitur ATS existing mungkin ada, integrasi target modul ini belum terbukti.",
+      "bukti": []
+    },
+    {
+      "id": "ats-39",
+      "kode": "M7",
+      "nama": "Withdraw & Position Closed",
+      "status": "not_started",
+      "kelompok": "Workflow lanjutan",
+      "manfaat": "Cancelled dibedakan dari perusahaan menolak; alasan dan tahap dicatat, bukan menambah rejection rate.",
+      "minggu": "Target minggu belum ditetapkan",
+      "catatan": "Scope dari RENCANA-MODUL-LENGKAP.md; beberapa fitur ATS existing mungkin ada, integrasi target modul ini belum terbukti.",
+      "bukti": []
+    },
+    {
+      "id": "ats-40",
+      "kode": "M7",
+      "nama": "Offering & kontrak handoff",
+      "status": "not_started",
+      "kelompok": "Workflow lanjutan",
+      "manfaat": "C-level kirim offering; HR catat sent/accepted/declined, respons H+3, dokumen dan jadwal kontrak; Apps Script kontrak bisa tetap awal.",
+      "minggu": "Target minggu belum ditetapkan",
+      "catatan": "Scope dari RENCANA-MODUL-LENGKAP.md; beberapa fitur ATS existing mungkin ada, integrasi target modul ini belum terbukti.",
+      "bukti": []
+    },
+    {
+      "id": "ats-41",
+      "kode": "M8",
+      "nama": "Full import & rekonsiliasi seluruh cakupan",
+      "status": "not_started",
+      "kelompok": "Workflow lanjutan",
+      "manfaat": "Pilot stabil, mapping disetujui, bandingkan jumlah/role/status/tanggal/hasil sebelum perluasan penuh.",
+      "minggu": "Target minggu belum ditetapkan",
+      "catatan": "Scope dari RENCANA-MODUL-LENGKAP.md; beberapa fitur ATS existing mungkin ada, integrasi target modul ini belum terbukti.",
+      "bukti": []
+    },
+    {
+      "id": "ats-42",
+      "kode": "M8",
+      "nama": "Sync terjadwal & konflik",
+      "status": "not_started",
+      "kelompok": "Workflow lanjutan",
+      "manfaat": "Rencana tiap 15 menit + manual; baris hilang tidak otomatis dihapus, perubahan ambigu ditahan. Jadwal nyata belum aktif.",
+      "minggu": "Target minggu belum ditetapkan",
+      "catatan": "Scope dari RENCANA-MODUL-LENGKAP.md; beberapa fitur ATS existing mungkin ada, integrasi target modul ini belum terbukti.",
+      "bukti": []
+    },
+    {
+      "id": "ats-43",
+      "kode": "M8",
+      "nama": "Masa transisi & cutover tracking",
+      "status": "not_started",
+      "kelompok": "Workflow lanjutan",
+      "manfaat": "HR mencoba workflow, penentuan sumber kebenaran jelas; arsip historis tidak otomatis pipeline aktif.",
+      "minggu": "Target minggu belum ditetapkan",
+      "catatan": "Scope dari RENCANA-MODUL-LENGKAP.md; beberapa fitur ATS existing mungkin ada, integrasi target modul ini belum terbukti.",
+      "bukti": []
+    },
+    {
+      "id": "ats-44",
+      "kode": "M8",
+      "nama": "Atlas source of truth & Sheet read-only",
+      "status": "not_started",
+      "kelompok": "Workflow lanjutan",
+      "manfaat": "Setelah stabil dan disetujui, input baru hanya di Atlas; Sheet menjadi arsip.",
+      "minggu": "Target minggu belum ditetapkan",
+      "catatan": "Scope dari RENCANA-MODUL-LENGKAP.md; beberapa fitur ATS existing mungkin ada, integrasi target modul ini belum terbukti.",
+      "bukti": []
+    }
+  ],
+  "kpi": [
+    {
+      "id": "v2-lengkap",
+      "label": "Semua hasil roadmap",
+      "kelompok": [
+        "Fondasi & sync",
+        "Workflow lanjutan"
+      ]
+    },
+    {
+      "id": "fondasi",
+      "label": "Fondasi & sync lokal",
+      "kelompok": [
+        "Fondasi & sync"
+      ]
+    }
+  ],
+  "persentase": {
+    "catatan": "Hasil berbobot sama hanya untuk checklist. Bukan estimasi waktu atau persentase seluruh produk selesai. Angka/bukti aktual dari HANDOFF; M2–M8 scope dari rencana resmi."
+  },
+  "sedangDikerjakan": {
+    "judul": "Menyiapkan pemeriksaan jalur online (belum ada hasil)",
+    "detail": "Bukan klaim sesi Claude sedang aktif. Pemeriksaan baca-saja ditugaskan: database/hosting, biaya, login HR, keamanan dan pemulihan. Jangan jalankan penambahan 76 dari prompt lama."
+  },
+  "keputusanDibutuhkan": [
+    "Jalur online dan izin spesifik dipilih setelah hasil pemeriksaan; belum izin project/deploy baru.",
+    "Mapping status historis/identitas role ambigu yang memang belum final; tidak perlu menetapkan Open/Closed sekarang."
+  ],
+  "kendala": [
+    {
+      "judul": "Production belum terverifikasi",
+      "detail": "DNS gagal sebelumnya; belum bukti project paused. 11 role belum dibandingkan."
+    },
+    {
+      "judul": "Data sumber belum lengkap",
+      "detail": "4.334 belum siap; 3.298 status kosong, 1.612 role unmapped, 1.019 status unmapped, 534 final unmapped, 48 possible duplicate, 8 email invalid. Alasan overlap."
+    },
+    {
+      "judul": "Jadwal belum dibaseline ulang",
+      "detail": "Timeline lama sekitar akhir Okt–Nov untuk rollout adalah estimasi historis, bukan jadwal baru. M2–M8 menunggu urutan/kapasitas yang dikonfirmasi; 3 jam/hari batas user."
+    }
+  ],
+  "langkahBerikutnya": [
+    "Claude personal melanjutkan pemeriksaan online baca-saja dari HANDOFF, bukan reset proyek.",
+    "Bandingkan temuan dengan roadmap Modul 1.5 dan berikan satu rekomendasi + usaha/biaya terverifikasi.",
+    "Lathisya memberi izin tindakan berikut yang spesifik; implementasi satu paket hingga ada hasil bisa dicoba.",
+    "M2 dashboard dan M3 action list setelah fondasi data stabil; M4–M7 workflow; M8 cutover sesuai keputusan roadmap."
+  ]
+}

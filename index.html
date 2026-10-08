@@ -1,0 +1,283 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Progres Candidate Tracker → ATS</title>
+<style>
+:root {
+  --bg: #f6f7f9; --card: #ffffff; --ink: #14181f; --muted: #5d6675; --faint: #8b93a1; --line: #e3e6eb;
+  --accent: #b45309; --accent-soft: #fef3c7;
+  --ok: #15803d; --ok-soft: #dcfce7; --run: #1d4ed8; --run-soft: #dbeafe;
+  --todo: #525c6b; --todo-soft: #eef0f3; --block: #b91c1c; --block-soft: #fee2e2;
+  --dev: #a16207; --dev-soft: #fef9c3; --live: #0f766e; --live-soft: #ccfbf1;
+  --ask: #7c3aed; --ask-soft: #ede9fe; --warn: #92400e; --warn-soft: #fef3c7;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #0f1216; --card: #171b21; --ink: #e8ebf0; --muted: #a3acba; --faint: #7a8494; --line: #2a303a;
+    --accent: #f59e0b; --accent-soft: #3a2a0c;
+    --ok: #4ade80; --ok-soft: #12301d; --run: #7aa7ff; --run-soft: #172745;
+    --todo: #b3bcc9; --todo-soft: #232933; --block: #f87171; --block-soft: #3a1717;
+    --dev: #fbbf24; --dev-soft: #3a2f0c; --live: #5eead4; --live-soft: #0f2e2b;
+    --ask: #b79cff; --ask-soft: #2a2145; --warn: #fbbf24; --warn-soft: #3a2a0c;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #0f1216; --card: #171b21; --ink: #e8ebf0; --muted: #a3acba; --faint: #7a8494; --line: #2a303a;
+  --accent: #f59e0b; --accent-soft: #3a2a0c;
+  --ok: #4ade80; --ok-soft: #12301d; --run: #7aa7ff; --run-soft: #172745;
+  --todo: #b3bcc9; --todo-soft: #232933; --block: #f87171; --block-soft: #3a1717;
+  --dev: #fbbf24; --dev-soft: #3a2f0c; --live: #5eead4; --live-soft: #0f2e2b;
+  --ask: #b79cff; --ask-soft: #2a2145; --warn: #fbbf24; --warn-soft: #3a2a0c;
+}
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--bg); color: var(--ink); font: 15px/1.55 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; }
+.wrap { max-width: 1040px; margin: 0 auto; padding: 28px 16px 64px; }
+header.top { display: flex; flex-wrap: wrap; gap: 12px; align-items: flex-end; justify-content: space-between; margin-bottom: 18px; }
+h1 { font-size: 26px; line-height: 1.2; margin: 0; letter-spacing: -0.01em; }
+.sub { color: var(--muted); margin: 4px 0 0; }
+.updated { font-size: 13px; color: var(--muted); text-align: right; }
+.updated b { color: var(--ink); }
+.stale { display: none; margin-top: 6px; font-size: 12.5px; background: var(--warn-soft); color: var(--warn); padding: 4px 10px; border-radius: 8px; }
+.release { border: 1px solid var(--line); background: var(--card); border-left: 4px solid var(--accent); border-radius: 12px; padding: 12px 16px; margin-bottom: 18px; }
+.release b { color: var(--accent); }
+.card { background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 18px 20px; }
+.grid3 { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; margin-bottom: 18px; }
+.kpi .label { font-size: 12.5px; color: var(--muted); font-weight: 600; text-transform: uppercase; letter-spacing: .04em; }
+.kpi .num { font-size: 30px; font-weight: 750; margin: 4px 0 2px; font-variant-numeric: tabular-nums; }
+.kpi .num small { font-size: 16px; color: var(--faint); font-weight: 600; }
+.kpi .note { font-size: 13px; color: var(--muted); }
+.dots { display: flex; gap: 4px; flex-wrap: wrap; margin-top: 8px; }
+.dot { width: 14px; height: 14px; border-radius: 4px; background: var(--todo-soft); border: 1px solid var(--line); }
+.dot.blocked { background: var(--block); border-color: var(--block); }
+.dot.in_progress { background: var(--run); border-color: var(--run); }
+.dot.done_dev_tested_local { background: var(--dev); border-color: var(--dev); }
+.dot.verified_local { background: var(--ok); border-color: var(--ok); }
+.dot.verified_live { background: var(--ok); border-color: var(--ok); }
+.dot.released { background: var(--live); border-color: var(--live); }
+.pct-note { font-size: 13px; color: var(--muted); margin: -8px 0 18px; }
+.two { display: grid; grid-template-columns: 1.2fr 1fr; gap: 12px; margin-bottom: 18px; }
+h2 { font-size: 17px; margin: 0 0 10px; }
+.summary { font-size: 16px; margin: 0 0 18px; }
+ul.clean { margin: 0; padding-left: 20px; }
+ul.clean li { margin: 4px 0; }
+.now h2 span { font-size: 12px; font-weight: 600; color: var(--run); background: var(--run-soft); padding: 2px 8px; border-radius: 999px; margin-left: 6px; vertical-align: 2px; }
+.ask li::marker { color: var(--ask); }
+.filters { display: flex; flex-wrap: wrap; gap: 6px; margin: 4px 0 12px; }
+.filters button { font: inherit; font-size: 13px; border: 1px solid var(--line); background: var(--card); color: var(--muted); padding: 5px 12px; border-radius: 999px; cursor: pointer; }
+.filters button[aria-pressed="true"] { background: var(--ink); color: var(--card); border-color: var(--ink); }
+.mods { display: grid; gap: 8px; }
+details.mod { background: var(--card); border: 1px solid var(--line); border-radius: 12px; }
+details.mod summary { list-style: none; cursor: pointer; display: grid; grid-template-columns: 46px 1fr auto; gap: 12px; align-items: center; padding: 12px 16px; }
+details.mod summary::-webkit-details-marker { display: none; }
+.code { font-size: 11px; font-weight: 700; color: var(--faint); }
+.mname { font-weight: 650; }
+.mname small { display: block; font-weight: 400; color: var(--muted); font-size: 13px; }
+.badge { font-size: 12px; font-weight: 650; padding: 3px 10px; border-radius: 999px; white-space: nowrap; }
+.b-blocked { background: var(--block-soft); color: var(--block); }
+.b-in_progress { background: var(--run-soft); color: var(--run); }
+.b-not_started { background: var(--todo-soft); color: var(--todo); }
+.b-done_dev_tested_local { background: var(--dev-soft); color: var(--dev); }
+.b-verified_local { background: var(--ok-soft); color: var(--ok); }
+.b-verified_live { background: var(--ok-soft); color: var(--ok); }
+.b-released { background: var(--live-soft); color: var(--live); }
+.mbody { padding: 0 16px 16px 74px; color: var(--muted); font-size: 14px; }
+.mbody p { margin: 0 0 6px; }
+.shots { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 10px; }
+.shots figure { margin: 0; width: 240px; }
+.shots img { width: 100%; aspect-ratio: 16 / 10; object-fit: cover; object-position: top; border: 1px solid var(--line); border-radius: 8px; display: block; cursor: zoom-in; background: #fff; }
+.shots figcaption { font-size: 12px; color: var(--faint); margin-top: 4px; }
+.gallery { display: grid; grid-template-columns: repeat(auto-fill, minmax(230px, 1fr)); gap: 12px; }
+.gallery figure { margin: 0; }
+.gallery img { width: 100%; aspect-ratio: 16 / 10; object-fit: cover; object-position: top; border: 1px solid var(--line); border-radius: 10px; display: block; cursor: zoom-in; background: #fff; }
+.gallery figcaption { font-size: 12.5px; color: var(--muted); margin-top: 6px; }
+.section { margin: 26px 0 0; }
+.legend { font-size: 13px; color: var(--muted); display: flex; flex-wrap: wrap; gap: 14px; margin-top: 8px; }
+.btn-preview { display: inline-block; font-weight: 650; font-size: 14px; color: #fff; background: var(--accent); padding: 8px 16px; border-radius: 999px; text-decoration: none; }
+.btn-preview:hover { opacity: .9; }
+.preview-link { display: inline-block; margin-top: 4px; font-size: 12.5px; color: var(--accent); text-decoration: none; font-weight: 600; }
+.preview-link:hover { text-decoration: underline; }
+footer { margin-top: 36px; font-size: 12.5px; color: var(--faint); border-top: 1px solid var(--line); padding-top: 14px; }
+dialog { border: none; padding: 0; max-width: 96vw; max-height: 92vh; background: transparent; }
+dialog img { max-width: 96vw; max-height: 88vh; border-radius: 10px; display: block; }
+dialog::backdrop { background: rgba(0,0,0,.7); }
+.err { color: var(--block); }
+@media (max-width: 760px) {
+  .grid3, .two { grid-template-columns: 1fr; }
+  details.mod summary { grid-template-columns: 1fr auto; }
+  .code { display: none; }
+  .mbody { padding: 0 16px 16px; }
+  .updated { text-align: left; }
+  .shots figure { width: 100%; }
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="top">
+    <div>
+      <h1 id="proyek">Progres</h1>
+      <p class="sub">Laporan progres untuk Lathisya · bahasa non-teknis</p>
+    </div>
+    <div class="updated">Pembaruan terakhir: <b id="updated"></b><br><span id="by"></span>
+      <div class="stale" id="stale"></div>
+    </div>
+  </header>
+
+  <div class="release" id="release"></div>
+  <p class="summary" id="ringkasan"></p>
+
+  <div class="card" id="bisa-tunjuk-wrap" style="margin-bottom:18px"></div>
+
+  <div class="card" id="roadmap-progress" style="margin-bottom:18px"></div>
+  <div class="grid3" id="kpi-wrap"></div>
+  <p class="pct-note" id="pct"></p>
+
+  <div class="two">
+    <div class="card now"><h2>Sedang dikerjakan <span>aktif</span></h2><p id="now-t" style="margin:0 0 4px;font-weight:650"></p><p id="now-d" style="margin:0;color:var(--muted)"></p></div>
+    <div class="card"><h2>Keputusan yang dibutuhkan</h2><ul class="clean ask" id="ask"></ul></div>
+  </div>
+
+  <div class="two">
+    <div class="card"><h2>Kendala</h2><ul class="clean" id="kendala"></ul></div>
+    <div class="card"><h2>Langkah berikutnya</h2><ol class="clean" id="next" style="padding-left:20px"></ol></div>
+  </div>
+
+  <section class="section">
+    <h2>Semua hasil</h2>
+    <div class="filters" id="filters"></div>
+    <div class="mods" id="mods"></div>
+    <div class="legend" id="legend"></div>
+  </section>
+
+  <section class="section">
+    <h2>Bukti tampilan</h2>
+    <p><a class="preview-link" href="./preview/">▶ Coba preview interaktif</a></p>
+    <p class="sub" style="margin:-4px 0 12px">Screenshot hanya ditambahkan kalau memang sudah ada — kosong berarti belum ada bukti visual untuk hasil ini.</p>
+    <div class="gallery" id="gallery"></div>
+  </section>
+
+  <footer id="foot">Report publik; snapshot checkpoint, bukan realtime. Pembaruan memerlukan publikasi ulang; belum ada pembaruan otomatis atau komentar online. Sumber: HANDOFF, rencana modul lengkap, dan commit. Status ATS existing bukan bukti modul baru selesai. Bukti diatribusikan ke catatan Claude; report tidak menguji ulang ATS. Preview dan screenshot publik hanya memakai data contoh.</footer>
+</div>
+<dialog id="zoom"><img alt=""></dialog>
+
+<script>
+(async () => {
+const $ = (id) => document.getElementById(id);
+const esc = (t) => String(t == null ? "" : t).replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
+
+let S;
+try {
+  const res = await fetch("status.json", { cache: "no-store" });
+  S = await res.json();
+} catch (e) {
+  document.querySelector(".wrap").innerHTML = '<p class="err">Gagal memuat status.json. Coba muat ulang halaman.</p>';
+  return;
+}
+
+const BULAN_PENDEK = ["Jan", "Feb", "Mar", "Apr", "Mei", "Jun", "Jul", "Agu", "Sep", "Okt", "Nov", "Des"];
+function weekOfMonth(d) {
+  const day = d.getDate();
+  if (day <= 7) return 1;
+  if (day <= 14) return 2;
+  if (day <= 21) return 3;
+  if (day <= 28) return 4;
+  return 5;
+}
+function weekLabel(d) { return `W${weekOfMonth(d)} ${BULAN_PENDEK[d.getMonth()]}`; }
+function freshnessText(d) {
+  const mins = Math.floor((Date.now() - d.getTime()) / 6e4);
+  if (mins < 1) return "baru saja";
+  if (mins < 60) return `${mins} menit lalu`;
+  const hrs = Math.floor(mins / 60);
+  if (hrs < 24) return `${hrs} jam lalu`;
+  const days = Math.floor(hrs / 24);
+  return `${days} hari lalu`;
+}
+
+const LABEL = S.statusLabel;
+const upd = new Date(S.diperbarui);
+$("proyek").textContent = "Progres " + S.proyek;
+$("updated").textContent = S.snapshotLabel || weekLabel(upd);
+$("by").textContent = "oleh " + S.diperbaruiOleh + " · W = minggu dalam bulan (W1=tgl 1-7 ... W5=29-akhir bulan)";
+const hoursOld = (Date.now() - upd.getTime()) / 36e5;
+if (hoursOld > 336) { $("stale").style.display = "block"; $("stale").textContent = `Belum diperbarui ${Math.floor(hoursOld / 24)} hari — status mungkin sudah usang.`; }
+$("release").innerHTML = `<b>${esc(S.ringkasanStatus.judul)}</b><br>${esc(S.ringkasanStatus.teks)}`;
+$("ringkasan").textContent = S.ringkasan;
+if (S.yangBisaDitunjukkan && S.yangBisaDitunjukkan.length) {
+  $("bisa-tunjuk-wrap").innerHTML = `<h2>✅ Yang bisa ditunjukkan sekarang</h2><ul class="clean">${S.yangBisaDitunjukkan.map((t) => `<li>${esc(t)}</li>`).join("")}</ul>
+    <p style="margin:12px 0 0"><a class="btn-preview" href="./preview/" target="_blank" rel="noopener">▶ Buka preview interaktif ATS</a></p>
+    <p class="sub" style="margin:6px 0 0">Bisa diklik-klik langsung di browser (data contoh, bukan aplikasi ATS final) — bukan cuma screenshot diam.</p>`;
+} else {
+  $("bisa-tunjuk-wrap").style.display = "none";
+}
+
+const H = S.hasil;
+const doneSet = new Set(["verified_local", "verified_live", "released"]);
+const done = (arr) => arr.filter((h) => doneSet.has(h.status)).length;
+const dotsHtml = (arr) => arr.map((h) => `<span class="dot ${h.status}" title="${esc(h.kode + " · " + h.nama + " — " + LABEL[h.status])}"></span>`).join("");
+
+const kpiHtml = S.kpi.map((k) => {
+  const items = H.filter((h) => k.kelompok.includes(h.kelompok));
+  return `<div class="card kpi"><div class="label">${esc(k.label)}</div><div class="num">${done(items)} <small>/ ${items.length} hasil</small></div><div class="note">hasil dengan bukti lokal yang tercatat</div><div class="dots">${dotsHtml(items)}</div></div>`;
+}).join("") + `<div class="card kpi"><div class="label">Perlu keputusan</div><div class="num">${S.keputusanDibutuhkan.length}</div><div class="note">keputusan dari Lathisya yang ditunggu</div></div>`;
+$("kpi-wrap").innerHTML = kpiHtml;
+const target = S.kpi.find((k) => k.id === "v2-lengkap");
+const targetItems = target ? H.filter((h) => target.kelompok.includes(h.kelompok)) : [];
+const verifiedCount = done(targetItems);
+const verifiedPct = targetItems.length ? Math.round(100 * verifiedCount / targetItems.length) : 0;
+$("roadmap-progress").innerHTML = `<h2>Progres hasil lokal dalam daftar roadmap</h2><div style="font-size:32px;font-weight:750">${verifiedPct}% hasil memiliki bukti lokal</div><progress value="${verifiedCount}" max="${targetItems.length || 1}" style="width:100%;height:18px" aria-label="Hasil V2 tervalidasi"></progress><p class="sub">${verifiedCount} dari ${targetItems.length} hasil memiliki bukti uji lokal atau rilis. Dihitung otomatis dari daftar hasil pada setiap pembaruan.</p><p class="sub">${esc(S.persentase.catatan)}</p>`;
+$("pct").textContent = "Persentase hasil memakai bobot sama; bukan estimasi waktu pengerjaan atau kesiapan produk untuk digunakan semua HR.";
+
+$("now-t").textContent = S.sedangDikerjakan.judul;
+$("now-d").textContent = S.sedangDikerjakan.detail + (S.sedangDikerjakan.mulai ? ` (mulai ${weekLabel(new Date(S.sedangDikerjakan.mulai))} — masih berjalan, belum ada tanggal selesai)` : "");
+$("ask").innerHTML = S.keputusanDibutuhkan.map((k) => `<li>${esc(k)}</li>`).join("");
+$("kendala").innerHTML = S.kendala.map((k) => `<li><b>${esc(k.judul)}.</b> ${esc(k.detail)}</li>`).join("") || "<li>Tidak ada.</li>";
+$("next").innerHTML = S.langkahBerikutnya.map((k) => `<li>${esc(k)}</li>`).join("");
+
+const STATUS_KEYS = S.statusOrder || Object.keys(LABEL);
+const FILTERS = [["semua", "Semua"], ...STATUS_KEYS.map((k) => [k, LABEL[k]])];
+let current = "semua";
+function renderMods() {
+  const list = H.filter((h) => current === "semua" || h.status === current);
+  $("mods").innerHTML = list.map((h) => `
+    <details class="mod">
+      <summary>
+        <span class="code">${esc(h.kode)}</span>
+        <span class="mname">${esc(h.nama)}<small>${esc(h.kelompok)}${" · " + esc(h.minggu || (h.tanggal ? weekLabel(new Date(h.tanggal)) : "Target minggu belum ditetapkan"))}</small></span>
+        <span class="badge b-${h.status}">${esc(LABEL[h.status])}</span>
+      </summary>
+      <div class="mbody">
+        <p>${esc(h.manfaat)}</p>
+        ${h.catatan ? `<p><i>${esc(h.catatan)}</i></p>` : ""}
+        ${h.bukti && h.bukti.length ? `<div class="shots">${h.bukti.map((b) => `<figure><img src="${esc(b.file)}" alt="${esc(b.ket)}" loading="lazy"><figcaption>${esc(b.ket)}</figcaption></figure>`).join("")}</div>` : ""}
+      </div>
+    </details>`).join("") || `<p class="sub">Tidak ada hasil di kategori ini.</p>`;
+}
+$("filters").innerHTML = FILTERS.map(([k, t]) => {
+  const n = k === "semua" ? H.length : H.filter((h) => h.status === k).length;
+  return `<button data-k="${k}" aria-pressed="${k === current}">${esc(t)} (${n})</button>`;
+}).join("");
+$("filters").addEventListener("click", (e) => {
+  const b = e.target.closest("button"); if (!b) return;
+  current = b.dataset.k;
+  for (const x of $("filters").children) x.setAttribute("aria-pressed", String(x === b));
+  renderMods();
+});
+renderMods();
+
+const defs = S.statusDefinisi || {};
+$("legend").innerHTML = Object.keys(defs).map((k) => `<span><b>${esc(LABEL[k])}</b> = ${esc(defs[k])}</span>`).join("");
+
+const shots = H.flatMap((h) => (h.bukti || []).map((b) => `<figure><img src="${esc(b.file)}" alt="${esc(b.ket)}" loading="lazy"><figcaption><b>${esc(h.kode)}</b> · ${esc(b.ket)}${h.id === "v2-2-wireframe" ? '<br><a class="preview-link" href="./preview/" target="_blank" rel="noopener">▶ Coba preview interaktif</a>' : ""}</figcaption></figure>`));
+$("gallery").innerHTML = shots.join("") || '<p class="sub">Belum ada screenshot yang ditambahkan.</p>';
+document.addEventListener("click", (e) => {
+  const img = e.target.closest("img"); if (!img || img.closest("dialog")) { if (e.target.closest("dialog")) $("zoom").close(); return; }
+  $("zoom").querySelector("img").src = img.src; $("zoom").showModal();
+});
+})();
+</script>
+</body>
+</html>
