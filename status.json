@@ -1,14 +1,17 @@
 {
   "proyek": "Candidate Tracker → ATS",
-  "diperbarui": "2026-10-08T00:00:00+07:00",
-  "snapshotLabel": "W2 Okt 2026 · snapshot 8 Okt (jam sumber tidak tersedia)",
-  "diperbaruiOleh": "Codex · bersumber catatan Claude dan repo sampai 8196ec9",
+  "diperbarui": "2026-10-13T09:30:00+07:00",
+  "snapshotLabel": "W3 Okt 2026 · snapshot 13 Okt pagi (setelah Import Review UX dan Perlu tindakan, lokal)",
+  "diperbaruiOleh": "Claude (akun personal) · bersumber hasil uji lokal 8 dan 13 Okt; commit lokal sampai ad955ac, belum di-push",
   "ringkasanStatus": {
     "judul": "Berjalan lokal; belum dirilis online untuk HR",
-    "teks": "29 arsip asli tersimpan, 105 siap, 76 tambahan belum disimpan. Sync asli manual. Tidak ada deployment atau jadwal aktif pada fitur baru."
+    "teks": "29 arsip asli tersimpan, 105 siap, 76 tambahan belum disimpan (ditunda). Sync asli manual. Ringkasan arsip, cadangan mapping, serta aktivitas shortlist dan pipeline kandidat aktif (M2) sudah terbukti lokal dengan data contoh. Tidak ada deployment atau jadwal aktif. Jalur online: database production terbukti paused dan hosting masih di Hobby pribadi; menunggu keputusan akun kantor."
   },
-  "ringkasan": "Fondasi dan pilot sudah menghasilkan alur yang bisa dicoba. Fokus berikutnya pemeriksaan akses online dalam Modul 1.5; perluasan 76 ditunda. M2–M8 di bawah diperinci per hasil, bukan digabung satu baris.",
+  "ringkasan": "Fondasi dan pilot sudah menghasilkan alur yang bisa dicoba, ditambah halaman ringkasan arsip lokal. Fokus berikutnya memastikan jalur online (akses akun, kuota, kepatuhan paket hosting); perluasan 76 ditunda. M2–M8 di bawah diperinci per hasil, bukan digabung satu baris.",
   "yangBisaDitunjukkan": [
+    "Perlu tindakan di /candidate-tracker/tindakan: kandidat tidak bergerak, offering menunggu (H+3), menunggu user, Skip per tahap, waktu sampai Hired (data contoh; sebagian dari M2/M3).",
+    "Aktivitas shortlist dan pipeline kandidat aktif di /candidate-tracker/aktivitas (diuji dengan data contoh; production belum terjangkau).",
+    "Ringkasan arsip di /candidate-tracker/arsip: arsip terpisah dari pipeline aktif, cakupan, waktu pembaruan, data belum lengkap.",
     "Preview, sync manual, bandingkan, berhenti/lanjutkan di aplikasi lokal.",
     "29 arsip asli dibandingkan ke Sheet; pipeline aktif tidak otomatis bertambah.",
     "Konfirmasi mapping dari UI memengaruhi kesiapan; status proses kosong tetap null dan perlu review.",
@@ -232,12 +235,21 @@
       "id": "ats-17",
       "kode": "M1.5B-3",
       "nama": "Import Review UX lengkap",
-      "status": "not_started",
+      "status": "done_dev_tested_local",
       "kelompok": "Fondasi & sync",
       "manfaat": "Quick view periode/pre-2026/masalah, filter tiap kolom, pagination seluruh hasil, kolom Kandidat dan mobile.",
-      "minggu": "Target belum ditetapkan",
-      "catatan": "Beberapa label/panel sudah dibangun, tetapi paket UX penuh belum diklaim selesai.",
-      "bukti": []
+      "minggu": "W3 Okt 2026",
+      "catatan": "9f0cc8f, 13 Okt. Tampilan cepat (bulan berjalan bawaan, bulan lalu, semua 2026, pre-2026, email invalid, duplikat, perlu review), 10 filter, pagination bawaan 100 (filter sebelum pagination), kolom Kandidat, panel filter mobile. 23 tes logika + interaksi nyata di browser pada 450 baris SINTETIS (di luar repo). BELUM dicoba di halaman Import dengan Sheet asli (butuh izin karena menyentuh data kandidat asli) — satu langkah buat Lathisya: buka /candidate-tracker/import. Karena itu belum berstatus terbukti lokal.",
+      "bukti": [
+        {
+          "file": "assets/import-review-ux-desktop.png",
+          "ket": "Data SINTETIS (example.test), bukan kandidat asli."
+        },
+        {
+          "file": "assets/import-review-ux-mobile.png",
+          "ket": "Mobile: panel filter bisa dibuka-tutup; halaman tidak melebar."
+        }
+      ]
     },
     {
       "id": "ats-18",
@@ -254,34 +266,59 @@
       "id": "ats-19",
       "kode": "M1.5",
       "nama": "Pemeriksaan jalur online + rollout aman",
-      "status": "not_started",
+      "status": "in_progress",
       "kelompok": "Fondasi & sync",
       "manfaat": "Cek hosting, database terpisah, login HR, biaya, akses dan pemulihan sebelum implementasi online.",
-      "minggu": "Berikutnya · target minggu belum ditetapkan",
-      "catatan": "Pemeriksaan baca-saja ditugaskan; belum ada hasil. Urutan dibandingkan roadmap, bukan otomatis berubah.",
+      "minggu": "W2 Okt 2026 · berjalan; target selesai belum ditetapkan",
+      "catatan": "8 Okt, baca-saja dari dashboard setelah login: database ATS terbukti PAUSED (data aman dan masih bisa dipulihkan); hosting ATS berada di paket pribadi gratis yang hanya untuk pemakaian non-komersial, tanpa bukti akun kantor; kuota database gratis dihitung per akun lintas organisasi. Rekomendasi dan izin spesifik sudah disampaikan; keputusan akun kantor dan biaya menunggu. Tidak ada resume/upgrade/deploy.",
+      "bukti": []
+    },
+    {
+      "id": "ats-45",
+      "kode": "M1.5",
+      "nama": "Cadangan mapping lokal + pemulihan",
+      "status": "verified_local",
+      "kelompok": "Fondasi & sync",
+      "manfaat": "28 keputusan mapping HR (hanya ada di database lokal) punya cadangan berkas yang tidak ikut Git dan bisa dipulihkan tanpa menimpa keputusan yang lebih baru.",
+      "minggu": "W2 Okt 2026",
+      "catatan": "Cadangan di folder lokal di luar Git, checksum dicek saat baca. Pemulihan: simulasi dulu, hanya memasukkan baris yang hilang, tidak pernah menghapus; menimpa hanya dengan --overwrite. Hanya database lokal. Terbukti dengan baris contoh; 28 baris asli tidak berubah (sidik sama sebelum/sesudah). Daftar kandidat terkunci TIDAK ikut dicadangkan (memuat email).",
       "bukti": []
     },
     {
       "id": "ats-20",
       "kode": "M2",
       "nama": "Aktivitas shortlist & breakdown PIC/role/source",
-      "status": "not_started",
+      "status": "verified_local",
       "kelompok": "Workflow lanjutan",
       "manfaat": "Shortlisted harian/mingguan/per PIC/per role/source; tanpa target harian kaku yang menghukum PIC.",
-      "minggu": "Target minggu belum ditetapkan",
-      "catatan": "Scope dari RENCANA-MODUL-LENGKAP.md; beberapa fitur ATS existing mungkin ada, integrasi target modul ini belum terbukti.",
-      "bukti": []
+      "minggu": "W3 Okt 2026",
+      "catatan": "dc5a336, 13 Okt. Halaman /candidate-tracker/aktivitas: shortlist hari ini / minggu ini (Sen–Min) / bulan ini dan 7 hari terakhir, rincian per PIC/role/source. Tanggal = entri Screening pertama (zona Jakarta). Hanya kandidat aktif; arsip tidak ikut. Terbukti lokal dengan 14 kandidat CONTOH di database lokal (sudah dihapus; data asli identik) dan dicocokkan dengan hitungan terpisah. BELUM diuji dengan data kandidat aktif production (tidak terjangkau; database lokal hanya 1 kandidat uji). Belum online.",
+      "bukti": [
+        {
+          "file": "assets/aktivitas-pipeline-desktop.png",
+          "ket": "Data CONTOH (Sample Role A/B), bukan kandidat asli; tab Minggu ini."
+        },
+        {
+          "file": "assets/aktivitas-pipeline-mobile.png",
+          "ket": "Tampilan mobile; tidak ada geser horizontal."
+        }
+      ]
     },
     {
       "id": "ats-21",
       "kode": "M2",
       "nama": "Pipeline & outcome dashboard",
-      "status": "not_started",
+      "status": "verified_local",
       "kelompok": "Workflow lanjutan",
       "manfaat": "Aktif, On Hold, interview, offering, Hired, Skip, Cancelled ditampilkan terpisah.",
-      "minggu": "Target minggu belum ditetapkan",
-      "catatan": "Scope dari RENCANA-MODUL-LENGKAP.md; beberapa fitur ATS existing mungkin ada, integrasi target modul ini belum terbukti.",
-      "bukti": []
+      "minggu": "W3 Okt 2026",
+      "catatan": "dc5a336, 13 Okt. Halaman yang sama: ringkasan status terkini, per status (13 status baku), dan per role. Skip, Cancelled (mundur) dan Cancelled (posisi ditutup) dihitung terpisah; status tidak dikenal tidak ditebak; tanpa persentase/rate. Alias status lama dibaca tanpa menulis ulang data. Hanya angka dari data contoh; belum diuji dengan data production; belum online. Alasan Skip, hired rate dan drop-off belum tersedia (penyebut/sumber belum disepakati).",
+      "bukti": [
+        {
+          "file": "assets/aktivitas-pipeline-desktop.png",
+          "ket": "Bagian Pipeline & outcome pada data CONTOH."
+        }
+      ]
     },
     {
       "id": "ats-22",
@@ -291,7 +328,7 @@
       "kelompok": "Workflow lanjutan",
       "manfaat": "Waktu screening → kirim → submit → review → user → interview → keputusan → offering; bukan tanggal AI scoring.",
       "minggu": "Target minggu belum ditetapkan",
-      "catatan": "Scope dari RENCANA-MODUL-LENGKAP.md; beberapa fitur ATS existing mungkin ada, integrasi target modul ini belum terbukti.",
+      "catatan": "13 Okt, SEBAGIAN (status tetap belum dikerjakan): hanya \"Total waktu sampai Hired\" (Screening pertama → Hired pertama dari riwayat status) yang tersedia di /candidate-tracker/tindakan, terbukti lokal dengan data contoh. Lead time antar tahap lain (assessment, submit, review, recap, respons user, interview, keputusan, offering) BELUM — sumber tanggal tiap tahap dan definisinya belum disepakati.",
       "bukti": []
     },
     {
@@ -302,7 +339,18 @@
       "kelompok": "Workflow lanjutan",
       "manfaat": "Kandidat lama tidak bergerak, tahap terlambat, respons user, drop-off dan reason group per role.",
       "minggu": "Target minggu belum ditetapkan",
-      "catatan": "Scope dari RENCANA-MODUL-LENGKAP.md; beberapa fitur ATS existing mungkin ada, integrasi target modul ini belum terbukti.",
+      "catatan": "13 Okt, SEBAGIAN (status tetap belum dikerjakan): \"Skip per tahap\" dan \"kandidat lama tidak bergerak\" tersedia di /candidate-tracker/tindakan (terbukti lokal, data contoh). Belum: tahap yang terlambat (butuh deadline), drop-off per tahap, reason group per role (alasan untuk kandidat aktif belum tersimpan terstruktur).",
+      "bukti": []
+    },
+    {
+      "id": "ats-46",
+      "kode": "M2",
+      "nama": "Ringkasan arsip (minimum)",
+      "status": "verified_local",
+      "kelompok": "Workflow lanjutan",
+      "manfaat": "HR melihat arsip terpisah dari pipeline aktif: jumlah per kelompok status dan per role, cakupan terhadap baris Sheet, waktu sinkron terakhir, dan data yang belum lengkap.",
+      "minggu": "W2 Okt 2026",
+      "catatan": "Hanya ringkasan arsip, BUKAN dashboard lengkap: tidak ada lead time, funnel, tren, atau beban per PIC (tertulis di halaman). Status dipetakan hanya lewat mapping terkonfirmasi. Angka (29 arsip, semuanya Skip; 27 Marketing Associate + 2 HRGA Manager) cocok dengan hitungan terpisah dari data mentah. Lokal saja; belum online.",
       "bukti": []
     },
     {
@@ -313,8 +361,17 @@
       "kelompok": "Workflow lanjutan",
       "manfaat": "Belum kirim assessment, submission belum lengkap, review menunggu, overdue, keputusan user dan offering follow-up.",
       "minggu": "Target minggu belum ditetapkan",
-      "catatan": "Scope dari RENCANA-MODUL-LENGKAP.md; beberapa fitur ATS existing mungkin ada, integrasi target modul ini belum terbukti.",
-      "bukti": []
+      "catatan": "13 Okt, SEBAGIAN (status tetap belum dikerjakan): \"Offering menunggu jawaban (H+3)\" dan \"menunggu keputusan user\" tersedia di /candidate-tracker/tindakan (terbukti lokal, data contoh; ambang 7 dan 3 hari bisa diubah, bukan aturan roadmap). Belum: belum kirim assessment, submission belum lengkap, review menunggu, overdue — butuh modul assessment/deadline; tidak ditebak.",
+      "bukti": [
+        {
+          "file": "assets/tindakan-desktop.png",
+          "ket": "Data CONTOH (Contoh Tindakan n), bukan kandidat asli."
+        },
+        {
+          "file": "assets/tindakan-mobile.png",
+          "ket": "Tampilan mobile; tidak ada geser horizontal."
+        }
+      ]
     },
     {
       "id": "ats-25",
@@ -558,17 +615,25 @@
     "catatan": "Hasil berbobot sama hanya untuk checklist. Bukan estimasi waktu atau persentase seluruh produk selesai. Angka/bukti aktual dari HANDOFF; M2–M8 scope dari rencana resmi."
   },
   "sedangDikerjakan": {
-    "judul": "Menyiapkan pemeriksaan jalur online (belum ada hasil)",
-    "detail": "Bukan klaim sesi Claude sedang aktif. Pemeriksaan baca-saja ditugaskan: database/hosting, biaya, login HR, keamanan dan pemulihan. Jangan jalankan penambahan 76 dari prompt lama."
+    "judul": "Pemeriksaan online selesai (baca-saja); menunggu keputusan akun kantor",
+    "detail": "Ringkasan arsip dan cadangan mapping terbukti lokal. Dashboard sudah dibaca: database paused, hosting di Hobby pribadi. Belum ada project/migrasi cloud/resume/deploy; penambahan 76 tetap ditunda."
   },
   "keputusanDibutuhkan": [
-    "Jalur online dan izin spesifik dipilih setelah hasil pemeriksaan; belum izin project/deploy baru.",
+    "Apakah Jakmall punya team Vercel dan organisasi Supabase milik kantor (atau akan dibuat/dibayar kantor), dan persetujuan biaya minimum. Tanpa itu, uji online tetap ditahan dan HR memakai versi lokal.",
     "Mapping status historis/identitas role ambigu yang memang belum final; tidak perlu menetapkan Open/Closed sekarang."
   ],
   "kendala": [
     {
-      "judul": "Production belum terverifikasi",
-      "detail": "DNS gagal sebelumnya; belum bukti project paused. 11 role belum dibandingkan."
+      "judul": "Database production PAUSED (terbukti)",
+      "detail": "8 Okt, dari dashboard: database ATS berstatus paused. Data aman dan bisa dipulihkan; paket gratis pause setelah 7 hari tanpa aktivitas. Belum di-resume (butuh keputusan). 11 role belum dibandingkan."
+    },
+    {
+      "judul": "Hosting ATS di Vercel Hobby pribadi",
+      "detail": "Terbukti dari halaman Billing: hosting ATS berpaket pribadi gratis (hanya non-komersial/personal). Tidak ada bukti akun/team kantor; ada deployment lain yang hidup tetapi pemiliknya belum diketahui."
+    },
+    {
+      "judul": "Kuota gratis tidak cukup untuk jalur aman",
+      "detail": "Supabase Free: 2 project aktif per AKUN lintas organisasi, 500 MB, pause 7 hari. Organisasi baru tidak menambah kuota. Organisasi ini dikelola via Vercel Marketplace, tagihan di Vercel."
     },
     {
       "judul": "Data sumber belum lengkap",
@@ -580,9 +645,9 @@
     }
   ],
   "langkahBerikutnya": [
-    "Claude personal melanjutkan pemeriksaan online baca-saja dari HANDOFF, bukan reset proyek.",
-    "Bandingkan temuan dengan roadmap Modul 1.5 dan berikan satu rekomendasi + usaha/biaya terverifikasi.",
-    "Lathisya memberi izin tindakan berikut yang spesifik; implementasi satu paket hingga ada hasil bisa dicoba.",
+    "Lathisya memutuskan akun kantor (team Vercel + organisasi Supabase) dan biaya minimum; setelah itu Claude menyiapkan satu delta rencana online final dan Codex mereview risikonya sekali.",
+    "Selama menunggu: HR memakai versi lokal; tidak ada resume database, upgrade, deploy, atau data asli online.",
+    "Pekerjaan lokal berikutnya yang tidak bergantung pada akun cloud dapat dilanjutkan sesuai izin.",
     "M2 dashboard dan M3 action list setelah fondasi data stabil; M4–M7 workflow; M8 cutover sesuai keputusan roadmap."
   ]
 }
