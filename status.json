@@ -1,21 +1,18 @@
 {
   "proyek": "Candidate Tracker → ATS",
-  "diperbarui": "2026-10-13T09:30:00+07:00",
-  "snapshotLabel": "W3 Okt 2026 · snapshot 13 Okt pagi (setelah Import Review UX dan Perlu tindakan, lokal)",
-  "diperbaruiOleh": "Claude (akun personal) · bersumber hasil uji lokal 8 dan 13 Okt; commit lokal sampai ad955ac, belum di-push",
+  "diperbarui": "2026-10-20T02:00:00+07:00",
+  "snapshotLabel": "20 Oktober 2026 · M3 tenggat & follow-up (data contoh)",
+  "diperbaruiOleh": "Claude · M3 dibangun & dicoba lokal; dicek Codex",
   "ringkasanStatus": {
-    "judul": "Berjalan lokal; belum dirilis online untuk HR",
-    "teks": "29 arsip asli tersimpan, 105 siap, 76 tambahan belum disimpan (ditunda). Sync asli manual. Ringkasan arsip, cadangan mapping, serta aktivitas shortlist dan pipeline kandidat aktif (M2) sudah terbukti lokal dengan data contoh. Tidak ada deployment atau jadwal aktif. Jalur online: database production terbukti paused dan hosting masih di Hobby pribadi; menunggu keputusan akun kantor."
+    "judul": "M3 tenggat & follow-up bisa dicoba lokal",
+    "teks": "HR bisa memasang tenggat dan jadwal follow-up per kandidat, mencatat reminder/WA/tidak merespons, dan melihat siapa yang lewat tenggat di halaman Perlu tindakan. Dicoba dengan data contoh di Mac; belum online, belum dengan data kandidat asli. Hasil terbukti lokal naik dari 19 ke 21 dari 46."
   },
-  "ringkasan": "Fondasi dan pilot sudah menghasilkan alur yang bisa dicoba, ditambah halaman ringkasan arsip lokal. Fokus berikutnya memastikan jalur online (akses akun, kuota, kepatuhan paket hosting); perluasan 76 ditunda. M2–M8 di bawah diperinci per hasil, bukan digabung satu baris.",
+  "ringkasan": "M3 tenggat & follow-up dibangun dan dicoba langsung dengan data contoh (21/46 hasil terbukti lokal, naik dari 19). Action list harian masih sebagian karena data pengiriman assessment baru ada di M4. Perluasan 76 kandidat tetap ditunda.",
   "yangBisaDitunjukkan": [
-    "Perlu tindakan di /candidate-tracker/tindakan: kandidat tidak bergerak, offering menunggu (H+3), menunggu user, Skip per tahap, waktu sampai Hired (data contoh; sebagian dari M2/M3).",
-    "Aktivitas shortlist dan pipeline kandidat aktif di /candidate-tracker/aktivitas (diuji dengan data contoh; production belum terjangkau).",
-    "Ringkasan arsip di /candidate-tracker/arsip: arsip terpisah dari pipeline aktif, cakupan, waktu pembaruan, data belum lengkap.",
-    "Preview, sync manual, bandingkan, berhenti/lanjutkan di aplikasi lokal.",
-    "29 arsip asli dibandingkan ke Sheet; pipeline aktif tidak otomatis bertambah.",
-    "Konfirmasi mapping dari UI memengaruhi kesiapan; status proses kosong tetap null dan perlu review.",
-    "Preview interaktif terpisah memakai example.test, tidak terhubung ke ATS/Sheet/database."
+    "Dicoba Claude di browser Mac (data contoh): pasang tenggat 2–5 hari/tanggal sendiri, tandai selesai, ubah tanggal, batalkan — riwayat tetap tersimpan.",
+    "Dicoba Claude (data contoh): catat 'tidak merespons', kirim reminder, tanda tetap ada; koreksi catatan yang salah tanpa menghapus.",
+    "Dicoba Claude (data contoh): halaman Perlu tindakan menampilkan lewat tenggat, tenggat hari ini/besok, follow-up jatuh tempo, tidak merespons; angka cocok dengan hitungan terpisah.",
+    "Dicek Codex: rencana (2 putaran) dan hasil akhir (2 putaran, 4 temuan diperbaiki, lolos)."
   ],
   "statusLabel": {
     "blocked": "Terhambat",
@@ -53,7 +50,7 @@
       "kelompok": "Fondasi & sync",
       "manfaat": "Nama/email, role, PIC, source, status, next action, bulan berjalan dan carry-over kandidat lama.",
       "minggu": "W2 Sep 2026",
-      "catatan": "Approval historis d4e119b; bukan uji ulang sesi report.",
+      "catatan": "Approval historis d4e119b; bukan uji ulang sesi report. QA Mac 19 Okt: tampilan bulan berjalan dan carry-over dicoba dengan fixture; bukan pengujian ulang data asli.",
       "bukti": []
     },
     {
@@ -75,7 +72,7 @@
       "kelompok": "Fondasi & sync",
       "manfaat": "Paste kandidat, validasi email dan duplikat, cek riwayat role/episode sebelum penyimpanan.",
       "minggu": "W2 Sep 2026",
-      "catatan": "",
+      "catatan": " QA Mac 19 Okt: validasi input email dicoba dengan 2 baris buatan; tanpa penyimpanan atau pemeriksaan riwayat asli.",
       "bukti": []
     },
     {
@@ -270,7 +267,7 @@
       "kelompok": "Fondasi & sync",
       "manfaat": "Cek hosting, database terpisah, login HR, biaya, akses dan pemulihan sebelum implementasi online.",
       "minggu": "W2 Okt 2026 · berjalan; target selesai belum ditetapkan",
-      "catatan": "8 Okt, baca-saja dari dashboard setelah login: database ATS terbukti PAUSED (data aman dan masih bisa dipulihkan); hosting ATS berada di paket pribadi gratis yang hanya untuk pemakaian non-komersial, tanpa bukti akun kantor; kuota database gratis dihitung per akun lintas organisasi. Rekomendasi dan izin spesifik sudah disampaikan; keputusan akun kantor dan biaya menunggu. Tidak ada resume/upgrade/deploy.",
+      "catatan": "8 Okt, baca-saja dari dashboard setelah login: database ATS (Supabase cyan-branch) PAUSED, bisa di-resume sampai 10 Nov 2027; hosting ATS di Vercel HOBBY pribadi (non-komersial) tanpa bukti team kantor; kuota Supabase Free dihitung per akun lintas organisasi. Rekomendasi dan izin spesifik sudah disampaikan; keputusan akun kantor dan biaya menunggu Lathisya. Tidak ada resume/upgrade/deploy.",
       "bukti": []
     },
     {
@@ -281,7 +278,7 @@
       "kelompok": "Fondasi & sync",
       "manfaat": "28 keputusan mapping HR (hanya ada di database lokal) punya cadangan berkas yang tidak ikut Git dan bisa dipulihkan tanpa menimpa keputusan yang lebih baru.",
       "minggu": "W2 Okt 2026",
-      "catatan": "Cadangan di folder lokal di luar Git, checksum dicek saat baca. Pemulihan: simulasi dulu, hanya memasukkan baris yang hilang, tidak pernah menghapus; menimpa hanya dengan --overwrite. Hanya database lokal. Terbukti dengan baris contoh; 28 baris asli tidak berubah (sidik sama sebelum/sesudah). Daftar kandidat terkunci TIDAK ikut dicadangkan (memuat email).",
+      "catatan": "Cadangan di .pilot-local/backups (di-ignore Git), checksum dicek saat baca. Pemulihan: simulasi dulu, hanya memasukkan baris yang hilang, tidak pernah menghapus; menimpa hanya dengan --overwrite. Hanya database lokal. Terbukti dengan baris contoh; 28 baris asli tidak berubah (sidik sama sebelum/sesudah). Daftar kandidat terkunci TIDAK ikut dicadangkan (memuat email).",
       "bukti": []
     },
     {
@@ -357,19 +354,15 @@
       "id": "ats-24",
       "kode": "M3",
       "nama": "Action list HR harian",
-      "status": "not_started",
+      "status": "in_progress",
       "kelompok": "Workflow lanjutan",
       "manfaat": "Belum kirim assessment, submission belum lengkap, review menunggu, overdue, keputusan user dan offering follow-up.",
       "minggu": "Target minggu belum ditetapkan",
-      "catatan": "13 Okt, SEBAGIAN (status tetap belum dikerjakan): \"Offering menunggu jawaban (H+3)\" dan \"menunggu keputusan user\" tersedia di /candidate-tracker/tindakan (terbukti lokal, data contoh; ambang 7 dan 3 hari bisa diubah, bukan aturan roadmap). Belum: belum kirim assessment, submission belum lengkap, review menunggu, overdue — butuh modul assessment/deadline; tidak ditebak.",
+      "catatan": "20 Okt (Claude), SEBAGIAN: /candidate-tracker/tindakan kini memuat Lewat tenggat, Tenggat hari ini/besok, Follow-up jatuh tempo, Tidak merespons (hanya kandidat berproses, dibatasi role yang boleh diakses) di samping Offering H+3 dan menunggu user. Angka halaman dicocokkan dengan hitungan SQL terpisah (data contoh). BELUM: belum dikirim assessment / assessment belum lengkap / menunggu review — butuh data M4.",
       "bukti": [
         {
-          "file": "assets/tindakan-desktop.png",
-          "ket": "Data CONTOH (Contoh Tindakan n), bukan kandidat asli."
-        },
-        {
-          "file": "assets/tindakan-mobile.png",
-          "ket": "Tampilan mobile; tidak ada geser horizontal."
+          "file": "assets/m3-20261020-perlu-tindakan.jpg",
+          "ket": "20 Okt · dicoba Claude · data contoh · 4 daftar baru; kandidat Hired dengan tenggat lama tidak ikut"
         }
       ]
     },
@@ -377,23 +370,37 @@
       "id": "ats-25",
       "kode": "M3",
       "nama": "Deadline fleksibel per role/kandidat",
-      "status": "not_started",
+      "status": "verified_local",
       "kelompok": "Workflow lanjutan",
       "manfaat": "Pilihan 2–5 hari atau custom; default role bisa diubah per kandidat.",
       "minggu": "Target minggu belum ditetapkan",
-      "catatan": "Scope dari RENCANA-MODUL-LENGKAP.md; beberapa fitur ATS existing mungkin ada, integrasi target modul ini belum terbukti.",
-      "bukti": []
+      "catatan": "20 Okt (Claude). Halaman kandidat: tombol 2/3/4/5 hari atau tanggal sendiri + keterangan; Selesai / Ubah tanggal / Batalkan dengan riwayat; label bila tahap kandidat berubah; default per role hanya mengisi pilihan awal (tidak memasang otomatis); benturan dua HR ditolak dengan pesan muat ulang. Bukti: dicoba langsung di browser Mac oleh Claude dengan role/kandidat CONTOH (SAMPLE-M3, dihapus lagi; sidik isi data lama identik sebelum/sesudah); 670/670 tes otomatis; hasil akhir dicek Codex 2 putaran (4 temuan diperbaiki, keputusan: lolos). DB lokal saja; belum online.",
+      "bukti": [
+        {
+          "file": "assets/m3-20261020-panel-kandidat.jpg",
+          "ket": "20 Okt · dicoba Claude · data contoh · tenggat 3 hari, catatan follow-up, koreksi catatan"
+        },
+        {
+          "file": "assets/m3-20261020-tahap-berubah.jpg",
+          "ket": "20 Okt · dicoba Claude · data contoh · tenggat lewat + peringatan tahap sudah berubah"
+        }
+      ]
     },
     {
       "id": "ats-26",
       "kode": "M3",
       "nama": "Follow-up & keputusan di luar Atlas",
-      "status": "not_started",
+      "status": "verified_local",
       "kelompok": "Workflow lanjutan",
       "manfaat": "Reminder kandidat/user, catatan WhatsApp, tidak merespons, dan keputusan diterima di luar website.",
       "minggu": "Target minggu belum ditetapkan",
-      "catatan": "Scope dari RENCANA-MODUL-LENGKAP.md; beberapa fitur ATS existing mungkin ada, integrasi target modul ini belum terbukti.",
-      "bukti": []
+      "catatan": "20 Okt (Claude). Catatan riwayat: reminder kandidat/user, catatan WhatsApp, tidak merespons, sudah merespons, keputusan di luar Atlas; satu jadwal follow-up aktif; 'tidak merespons' bertahan sampai dicatat 'sudah merespons' (reminder tidak menghapusnya); salah input dikoreksi, tidak dihapus. HANYA pencatatan — tidak ada pengiriman reminder otomatis. Bukti: dicoba langsung di browser Mac oleh Claude dengan role/kandidat CONTOH (SAMPLE-M3, dihapus lagi; sidik isi data lama identik sebelum/sesudah); 670/670 tes otomatis; hasil akhir dicek Codex 2 putaran (4 temuan diperbaiki, keputusan: lolos). DB lokal saja; belum online.",
+      "bukti": [
+        {
+          "file": "assets/m3-20261020-panel-kandidat.jpg",
+          "ket": "20 Okt · dicoba Claude · data contoh · tanda tidak merespons tetap ada setelah reminder; koreksi mengembalikan tanda"
+        }
+      ]
     },
     {
       "id": "ats-27",
@@ -615,8 +622,8 @@
     "catatan": "Hasil berbobot sama hanya untuk checklist. Bukan estimasi waktu atau persentase seluruh produk selesai. Angka/bukti aktual dari HANDOFF; M2–M8 scope dari rencana resmi."
   },
   "sedangDikerjakan": {
-    "judul": "Pemeriksaan online selesai (baca-saja); menunggu keputusan akun kantor",
-    "detail": "Ringkasan arsip dan cadangan mapping terbukti lokal. Dashboard sudah dibaca: database paused, hosting di Hobby pribadi. Belum ada project/migrasi cloud/resume/deploy; penambahan 76 tetap ditunda."
+    "judul": "M3 sebagian selesai; berikutnya M4 (workflow assessment)",
+    "detail": "Tenggat dan follow-up terbukti lokal dengan data contoh. Belum diuji dengan kandidat asli dan belum online. Item action list yang butuh data assessment menunggu M4."
   },
   "keputusanDibutuhkan": [
     "Apakah Jakmall punya team Vercel dan organisasi Supabase milik kantor (atau akan dibuat/dibayar kantor), dan persetujuan biaya minimum. Tanpa itu, uji online tetap ditahan dan HR memakai versi lokal.",
@@ -624,16 +631,16 @@
   ],
   "kendala": [
     {
-      "judul": "Database production PAUSED (terbukti)",
-      "detail": "8 Okt, dari dashboard: database ATS berstatus paused. Data aman dan bisa dipulihkan; paket gratis pause setelah 7 hari tanpa aktivitas. Belum di-resume (butuh keputusan). 11 role belum dibandingkan."
+      "judul": "Pemulihan online belum diverifikasi",
+      "detail": "Status paused berasal dari laporan pemeriksaan dashboard 8 Oktober, bukan pemeriksaan cloud oleh Codex hari ini. Backup database production snapshot 6 Oktober sudah tersedia; integritas arsip diperiksa baca-saja. Kesesuaian isi backup dan kelengkapan berkas unggahan cloud belum dibuktikan."
     },
     {
       "judul": "Hosting ATS di Vercel Hobby pribadi",
-      "detail": "Terbukti dari halaman Billing: hosting ATS berpaket pribadi gratis (hanya non-komersial/personal). Tidak ada bukti akun/team kantor; ada deployment lain yang hidup tetapi pemiliknya belum diketahui."
+      "detail": "Laporan Claude dari dashboard 8 Oktober: hosting berada pada Hobby pribadi; akun kantor dan biaya belum diputuskan. Kondisi cloud tidak diperiksa ulang oleh Codex pada QA Mac 19 Oktober."
     },
     {
       "judul": "Kuota gratis tidak cukup untuk jalur aman",
-      "detail": "Supabase Free: 2 project aktif per AKUN lintas organisasi, 500 MB, pause 7 hari. Organisasi baru tidak menambah kuota. Organisasi ini dikelola via Vercel Marketplace, tagihan di Vercel."
+      "detail": "Pilihan akun dan biaya online masih menunggu keputusan. Pemeriksaan Mac 19 Oktober tidak mengubah akun, paket, koneksi cloud, atau deployment."
     },
     {
       "judul": "Data sumber belum lengkap",
@@ -645,9 +652,9 @@
     }
   ],
   "langkahBerikutnya": [
-    "Lathisya memutuskan akun kantor (team Vercel + organisasi Supabase) dan biaya minimum; setelah itu Claude menyiapkan satu delta rencana online final dan Codex mereview risikonya sekali.",
-    "Selama menunggu: HR memakai versi lokal; tidak ada resume database, upgrade, deploy, atau data asli online.",
-    "Pekerjaan lokal berikutnya yang tidak bergantung pada akun cloud dapat dilanjutkan sesuai izin.",
-    "M2 dashboard dan M3 action list setelah fondasi data stabil; M4–M7 workflow; M8 cutover sesuai keputusan roadmap."
-  ]
+    "Thisya: lihat 3 screenshot M3 dan jawab 1 pertanyaan alur (cukup dari HP).",
+    "Claude: susun rencana M4 (workflow assessment per role + pemantauan submission) → review Codex → izin bila ada perubahan database.",
+    "Perluasan 76 kandidat tetap ditunda; akun kantor/biaya online masih menunggu keputusan."
+  ],
+  "pertanyaanAlur": "M3: apakah alur 'pasang tenggat di halaman kandidat → muncul di Perlu tindakan saat lewat/hari ini → tandai Selesai' sudah sesuai cara kerja HR sehari-hari?"
 }
