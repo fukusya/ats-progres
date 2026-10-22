@@ -1,19 +1,18 @@
 {
   "proyek": "Candidate Tracker → ATS",
-  "diperbarui": "2026-10-20T09:30:00+07:00",
-  "snapshotLabel": "20 Oktober 2026 · M4a alur assessment (data contoh)",
-  "diperbaruiOleh": "Claude · M4a dibangun & dicoba lokal; dicek Codex",
+  "diperbarui": "2026-10-23T03:20:00+07:00",
+  "snapshotLabel": "23 Oktober 2026 · teks petunjuk GForm diperjelas (data tiruan)",
+  "diperbaruiOleh": "Claude · M4b-A dibangun & dicoba; dicek Codex",
   "ringkasanStatus": {
-    "judul": "Alur assessment per role bisa dicoba lokal",
-    "teks": "Tiap role kini punya alur assessment (GForm/Psikotes/Technical Test, bersamaan atau berurutan). HR mencatat tes dikirim, dikumpulkan, lolos/tidak; tahap berikutnya baru terbuka setelah HR menekan tombol. Halaman Perlu tindakan sekarang lengkap, termasuk siapa yang belum dikirim assessment, belum mengumpulkan, atau menunggu review. Dicoba dengan data contoh; belum online, belum kirim email otomatis. Hasil terbukti lokal naik dari 21 ke 23 dari 46 (50%)."
+    "judul": "ATS bisa mengecek isian GForm otomatis",
+    "teks": "Di panel Assessment, ATS membaca tab rawdata_from_gform (baca saja) dan memberi tahu bila sudah ada isian dengan email kandidat sejak GForm dikirim; HR tinggal memeriksa dan menekan Tandai dikumpulkan. Hasil terbukti lokal tetap 23 dari 46 (50%) karena hasil ats-28 baru sebagian."
   },
-  "ringkasan": "M4a alur assessment dibangun dan dicoba dengan data contoh (23/46 hasil terbukti lokal, naik dari 21). Pengiriman email assessment dan pencocokan GForm otomatis menyusul di M4b.",
+  "ringkasan": "M4b-A: deteksi isian GForm dari rawdata_from_gform sudah jalan (baca saja). 23/46 hasil terbukti lokal. Berikutnya M5 (kode aktivasi psikotes).",
   "yangBisaDitunjukkan": [
-    "Dicoba Claude (data contoh): atur alur assessment role (GForm dulu, lalu Psikotes + Technical Test bersamaan).",
-    "Dicoba Claude (data contoh): GForm dikirim → dikumpulkan → Lolos → tombol 'buka tahap berikutnya' → Psikotes & Technical Test terbuka; tes yang belum dikirim tetap terhitung.",
-    "Dicoba Claude (data contoh): Tidak lolos menghentikan alur; salah klik dikoreksi dengan alasan dan tercatat di riwayat.",
-    "Dicoba Claude (data contoh): Perlu tindakan menampilkan belum dikirim / belum dikumpulkan (lewat tenggat) / menunggu review; angka cocok dengan hitungan terpisah.",
-    "Dicek Codex: rencana & hasil akhir masing-masing 2 putaran → lolos."
+    "Dicoba Claude (data tiruan): panel GForm menampilkan 'Ada isian dengan email yang sama' + tombol Tandai dikumpulkan dengan tanggal isian.",
+    "Dicoba Claude (data tiruan): isian sebelum tanggal kirim tidak dianggap terkumpul (kemungkinan form role lain).",
+    "Dibaca langsung (Sheet asli, baca saja, tanpa menampilkan data pribadi): 8.673 baris isian, kolom email & timestamp ditemukan sesuai rumus HR.",
+    "Dicek Codex: rencana & hasil akhir → lolos setelah 4 perbaikan."
   ],
   "statusLabel": {
     "blocked": "Terhambat",
@@ -427,12 +426,21 @@
       "id": "ats-28",
       "kode": "M4",
       "nama": "GForm & pemantauan submission",
-      "status": "not_started",
+      "status": "in_progress",
       "kelompok": "Workflow lanjutan",
       "manfaat": "Form berbeda per role; cocokkan normalized email melalui indeks rawdata_from_gform; semua tes wajib harus terkumpul.",
       "minggu": "Target minggu belum ditetapkan",
-      "catatan": "Scope dari RENCANA-MODUL-LENGKAP.md; beberapa fitur ATS existing mungkin ada, integrasi target modul ini belum terbukti.",
-      "bukti": []
+      "catatan": "20 Okt (Claude), SEBAGIAN: panel Assessment membaca tab rawdata_from_gform (Sheet asli, baca saja, hanya kolom email & timestamp — kolom C & B seperti rumus kolom Q HR) dan menampilkan 'Ada isian dengan email yang sama' sejak tanggal kirim + tombol Tandai dikumpulkan (tetap keputusan HR); isian lama / tanggal tak terbaca ditandai jelas. Baca langsung Sheet asli: 8.673 baris, 8.305 email unik, 104 timestamp teks tak terbaca. Kondisi 'terdeteksi' dicoba di browser dengan data TIRUAN; dengan Sheet asli kandidat contoh → 'belum ada isian'. 720/720 tes. Dicek Codex (rencana 1 putaran + hasil 2 putaran → lolos). BELUM: penanda di Perlu tindakan, form berbeda per role, kelengkapan psikotes/technical.",
+      "bukti": [
+        {
+          "file": "assets/m4b-20261023-gform-terdeteksi.png",
+          "ket": "23 Okt · dicoba Claude · data TIRUAN · email kandidat ditemukan di jawaban GForm → HR memastikan lalu menekan Tandai sudah mengisi"
+        },
+        {
+          "file": "assets/m4b-20261020-gform-isian-lama.jpg",
+          "ket": "20 Okt · dicoba Claude · data TIRUAN · hanya jawaban lama (sebelum dikirim) → tidak dianggap terkumpul"
+        }
+      ]
     },
     {
       "id": "ats-29",
@@ -637,8 +645,8 @@
     "catatan": "Hasil berbobot sama hanya untuk checklist. Bukan estimasi waktu atau persentase seluruh produk selesai. Angka/bukti aktual dari HANDOFF; M2–M8 scope dari rencana resmi."
   },
   "sedangDikerjakan": {
-    "judul": "M4a selesai lokal; berikutnya M4b atau M5",
-    "detail": "M4b (pencocokan GForm + email assessment) butuh link Form Responses dan izin email/data asli. Tanpa itu, lanjut M5 (pool activation code psikotes) yang bisa dikerjakan dengan data contoh."
+    "judul": "Berikutnya M5 — kode aktivasi psikotes",
+    "detail": "Tab activation_code_gform sudah ada di Sheet; M5 akan mengelola pool kode per kandidat. Pengiriman email assessment (ats-30) tetap menunggu izin."
   },
   "keputusanDibutuhkan": [
     "Apakah Jakmall punya team Vercel dan organisasi Supabase milik kantor (atau akan dibuat/dibayar kantor), dan persetujuan biaya minimum. Tanpa itu, uji online tetap ditahan dan HR memakai versi lokal.",
@@ -667,9 +675,9 @@
     }
   ],
   "langkahBerikutnya": [
-    "Thisya: lihat 3 screenshot M4a dan jawab 1 pertanyaan alur.",
-    "Claude: lanjut M5 (pool activation code psikotes) — rencana → review Codex → izin bila ada perubahan database.",
-    "M4b menunggu link Form Responses per role + izin email/data asli dari Thisya."
+    "Claude: rencana M5 (pool activation code) → review Codex → izin bila ada perubahan database.",
+    "Penanda 'sudah isi GForm' di halaman Perlu tindakan masuk daftar tunda.",
+    "Email assessment (ats-30) menunggu izin email dari Thisya."
   ],
-  "pertanyaanAlur": "M4a: apakah alur 'Mulai assessment → tandai GForm dikirim → dikumpulkan → Lolos → buka tahap berikutnya → tandai Psikotes/Technical dikirim' sesuai cara kerja HR?"
+  "pertanyaanAlur": "M4b-A: ATS memberi tahu 'Email kandidat ini ditemukan di jawaban GForm', HR memastikan lalu menekan Tandai sudah mengisi — sudah pas?"
 }
