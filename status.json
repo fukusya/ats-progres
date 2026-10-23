@@ -1,13 +1,13 @@
 {
   "proyek": "Candidate Tracker → ATS",
-  "diperbarui": "2026-10-23T12:00:00+07:00",
-  "snapshotLabel": "23 Oktober 2026 · M5a kode aktivasi psikotes (data contoh)",
-  "diperbaruiOleh": "Claude · M5a dibangun & dicoba lokal; dicek Codex",
+  "diperbarui": "2026-10-23T17:30:00+07:00",
+  "snapshotLabel": "23 Oktober 2026 · mapping historis selesai",
+  "diperbaruiOleh": "Thisya memutuskan mapping; Claude menyimpan & menghitung dampak",
   "ringkasanStatus": {
-    "judul": "Kode aktivasi psikotes tidak lagi tercecer",
-    "teks": "Setiap kode HRD Room punya status jelas (tersedia, dicadangkan, dipakai, perlu reset), satu kode untuk satu kandidat, dan bisa dikembalikan hanya setelah dicek di HRD Room. HR mengambil kode langsung dari kartu Psikotes kandidat. Dicoba dengan data contoh; belum online. Hasil terbukti lokal naik dari 23 ke 24 dari 46 (52,2%)."
+    "judul": "Mapping data lama selesai: 1.125 baris siap diimpor",
+    "teks": "Semua nama role, status, dan sumber kandidat di Sheet lama sudah dipetakan oleh HR. Baris yang siap dipindah ke arsip ATS naik dari 105 menjadi 1.125. Sisanya tertahan karena kolom status di Sheet kosong (tidak ditebak). Hasil terbukti lokal 25 dari 46 (54,3%)."
   },
-  "ringkasan": "M5a pool kode aktivasi dibangun dan dicoba dengan data contoh (24/46 hasil terbukti lokal). Upload/preview PDF dan ringkasan psikotes (M5b) menunggu keputusan tempat simpan berkas.",
+  "ringkasan": "Mapping historis selesai (ats-16). 25/46 hasil terbukti lokal. Berikutnya M5b (PDF psikotes di Supabase Storage), lalu M6 dan M7.",
   "yangBisaDitunjukkan": [
     "Dicoba Claude (data contoh): tempel kode di Pengaturan; kode dobel (beda huruf) otomatis dilewati.",
     "Dicoba Claude (data contoh): Ambil kode aktivasi di kartu Psikotes → kode muncul + Salin; klik lagi = kode yang sama.",
@@ -222,11 +222,11 @@
       "id": "ats-16",
       "kode": "M1.5B",
       "nama": "Mapping role/status historis yang tersisa",
-      "status": "blocked",
+      "status": "verified_local",
       "kelompok": "Fondasi & sync",
       "manfaat": "Baris belum siap tetap ditahan; 11 identitas role belum dibandingkan ke production; alasan ambigu tidak ditebak.",
       "minggu": "Target belum ditetapkan",
-      "catatan": "4.334 belum siap; 3.298 status proses kosong, alasan dapat overlap.",
+      "catatan": "23 Okt: semua nilai role/status/source historis sudah diputuskan Thisya (51 mapping baru, total 79) dan disimpan ke DB lokal; hanya '<2025' dan 'Pending' sengaja dibiarkan kosong (tidak ditebak). Bukti (hitungan dry-run dari Sheet asli, jumlah saja): baris siap impor 105 → 1.125 dari 4.784; tidak ada lagi baris yang tertahan karena mapping. Yang tersisa bukan soal mapping: 3.642 baris status proses kosong di Sheet, 72 kemungkinan dobel, 8 email tidak valid. Cadangan mapping lama: .pilot-local/backups. Belum: impor 1.125 baris itu ke arsip (masih ditunda bersama perluasan 76 — keputusan Thisya).",
       "bukti": []
     },
     {
