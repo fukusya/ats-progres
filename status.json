@@ -1,18 +1,19 @@
 {
   "proyek": "Candidate Tracker → ATS",
-  "diperbarui": "2026-10-23T03:20:00+07:00",
-  "snapshotLabel": "23 Oktober 2026 · teks petunjuk GForm diperjelas (data tiruan)",
-  "diperbaruiOleh": "Claude · M4b-A dibangun & dicoba; dicek Codex",
+  "diperbarui": "2026-10-23T12:00:00+07:00",
+  "snapshotLabel": "23 Oktober 2026 · M5a kode aktivasi psikotes (data contoh)",
+  "diperbaruiOleh": "Claude · M5a dibangun & dicoba lokal; dicek Codex",
   "ringkasanStatus": {
-    "judul": "ATS bisa mengecek isian GForm otomatis",
-    "teks": "Di panel Assessment, ATS membaca tab rawdata_from_gform (baca saja) dan memberi tahu bila sudah ada isian dengan email kandidat sejak GForm dikirim; HR tinggal memeriksa dan menekan Tandai dikumpulkan. Hasil terbukti lokal tetap 23 dari 46 (50%) karena hasil ats-28 baru sebagian."
+    "judul": "Kode aktivasi psikotes tidak lagi tercecer",
+    "teks": "Setiap kode HRD Room punya status jelas (tersedia, dicadangkan, dipakai, perlu reset), satu kode untuk satu kandidat, dan bisa dikembalikan hanya setelah dicek di HRD Room. HR mengambil kode langsung dari kartu Psikotes kandidat. Dicoba dengan data contoh; belum online. Hasil terbukti lokal naik dari 23 ke 24 dari 46 (52,2%)."
   },
-  "ringkasan": "M4b-A: deteksi isian GForm dari rawdata_from_gform sudah jalan (baca saja). 23/46 hasil terbukti lokal. Berikutnya M5 (kode aktivasi psikotes).",
+  "ringkasan": "M5a pool kode aktivasi dibangun dan dicoba dengan data contoh (24/46 hasil terbukti lokal). Upload/preview PDF dan ringkasan psikotes (M5b) menunggu keputusan tempat simpan berkas.",
   "yangBisaDitunjukkan": [
-    "Dicoba Claude (data tiruan): panel GForm menampilkan 'Ada isian dengan email yang sama' + tombol Tandai dikumpulkan dengan tanggal isian.",
-    "Dicoba Claude (data tiruan): isian sebelum tanggal kirim tidak dianggap terkumpul (kemungkinan form role lain).",
-    "Dibaca langsung (Sheet asli, baca saja, tanpa menampilkan data pribadi): 8.673 baris isian, kolom email & timestamp ditemukan sesuai rumus HR.",
-    "Dicek Codex: rencana & hasil akhir → lolos setelah 4 perbaikan."
+    "Dicoba Claude (data contoh): tempel kode di Pengaturan; kode dobel (beda huruf) otomatis dilewati.",
+    "Dicoba Claude (data contoh): Ambil kode aktivasi di kartu Psikotes → kode muncul + Salin; klik lagi = kode yang sama.",
+    "Dicoba Claude (data contoh): kembalikan kode hanya setelah centang 'sudah dicek di HRD Room' + alasan; kode yang pernah diberikan tidak bisa dihapus.",
+    "Diuji di database: 4 klik bersamaan untuk kandidat sama → 1 kode; kandidat berbeda → kode berbeda.",
+    "Dicek Codex: rencana & hasil akhir → lolos."
   ],
   "statusLabel": {
     "blocked": "Terhambat",
@@ -473,12 +474,25 @@
       "id": "ats-31",
       "kode": "M5",
       "nama": "Pool activation code & assignment",
-      "status": "not_started",
+      "status": "verified_local",
       "kelompok": "Workflow lanjutan",
       "manfaat": "Available/reserved/used/reset-needed, satu code per kandidat, pengembalian hanya jika benar-benar belum dipakai.",
       "minggu": "Target minggu belum ditetapkan",
-      "catatan": "Scope dari RENCANA-MODUL-LENGKAP.md; beberapa fitur ATS existing mungkin ada, integrasi target modul ini belum terbukti.",
-      "bukti": []
+      "catatan": "23 Okt (Claude). Pool kode aktivasi HRD Room per role dengan status Tersedia → Dicadangkan → Dipakai → Perlu reset → Tersedia; satu kode aktif per kandidat (klik ganda/bersamaan tidak dobel); kode sama tidak bisa masuk dua kali (beda huruf/role); mengembalikan / selesai reset wajib centang 'sudah dicek di HRD Room' + alasan; kode yang pernah diberikan tidak bisa dihapus; semua perubahan tercatat. Tombol 'Ambil kode aktivasi' di kartu Psikotes (tidak mengubah status assessment, tidak mengirim apa pun). Celah lama ditutup: API kode & kirim email kini wajib login HR + akses role; email psikotes gagal jelas bila stok habis (tidak lagi mengirim kode '—'). Bukti: dicoba langsung di browser Mac dengan role/kandidat CONTOH (SAMPLE-M5, dihapus; cadangan terbukti pulih; 25 tabel lama identik); uji aturan & balapan di database; 737/737 tes (email diuji dengan pengirim tiruan). Dicek Codex: rencana 2 putaran + hasil 2 putaran → lolos. DB lokal; belum online. Deteksi 'dipakai' otomatis dari activation_code_gform ditunda.",
+      "bukti": [
+        {
+          "file": "assets/m5a-20261023-kode-kandidat.png",
+          "ket": "23 Okt · dicoba Claude · data contoh · kode aktivasi di kartu Psikotes (dicadangkan, salin, tandai dipakai, kembalikan)"
+        },
+        {
+          "file": "assets/m5a-20261023-kembalikan-kode.png",
+          "ket": "23 Okt · dicoba Claude · data contoh · kembalikan kode wajib centang pengecekan HRD Room + alasan"
+        },
+        {
+          "file": "assets/m5a-20261023-pool-pengaturan.png",
+          "ket": "23 Okt · dicoba Claude · data contoh · daftar kode per status di Pengaturan"
+        }
+      ]
     },
     {
       "id": "ats-32",
@@ -645,8 +659,8 @@
     "catatan": "Hasil berbobot sama hanya untuk checklist. Bukan estimasi waktu atau persentase seluruh produk selesai. Angka/bukti aktual dari HANDOFF; M2–M8 scope dari rencana resmi."
   },
   "sedangDikerjakan": {
-    "judul": "Berikutnya M5 — kode aktivasi psikotes",
-    "detail": "Tab activation_code_gform sudah ada di Sheet; M5 akan mengelola pool kode per kandidat. Pengiriman email assessment (ats-30) tetap menunggu izin."
+    "judul": "Berikutnya: M5b (PDF & ringkasan psikotes) atau M6",
+    "detail": "Upload PDF psikotes di ATS lama memakai penyimpanan cloud (Vercel Blob) yang sengaja dimatikan di Mac — perlu keputusan tempat simpan sebelum M5b."
   },
   "keputusanDibutuhkan": [
     "Apakah Jakmall punya team Vercel dan organisasi Supabase milik kantor (atau akan dibuat/dibayar kantor), dan persetujuan biaya minimum. Tanpa itu, uji online tetap ditahan dan HR memakai versi lokal.",
@@ -675,9 +689,9 @@
     }
   ],
   "langkahBerikutnya": [
-    "Claude: rencana M5 (pool activation code) → review Codex → izin bila ada perubahan database.",
-    "Penanda 'sudah isi GForm' di halaman Perlu tindakan masuk daftar tunda.",
-    "Email assessment (ats-30) menunggu izin email dari Thisya."
+    "Thisya: lihat 3 screenshot M5a dan jawab 1 pertanyaan alur.",
+    "Claude: rencana M5b (upload/preview PDF + ringkasan) — butuh keputusan tempat simpan berkas; sambil menunggu, M6 (akses HR/Hiring Manager/C-level) bisa direncanakan.",
+    "Email assessment (ats-30) menunggu izin email."
   ],
-  "pertanyaanAlur": "M4b-A: ATS memberi tahu 'Email kandidat ini ditemukan di jawaban GForm', HR memastikan lalu menekan Tandai sudah mengisi — sudah pas?"
+  "pertanyaanAlur": "M5a: HR mengambil kode dari kartu Psikotes → kirim ke kandidat seperti biasa → tandai 'sudah dipakai' setelah kandidat aktivasi. Mengembalikan kode hanya setelah dicek di HRD Room. Sudah sesuai?"
 }
