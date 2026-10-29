@@ -1,13 +1,13 @@
 {
   "proyek": "Candidate Tracker → ATS",
-  "diperbarui": "2026-10-23T17:30:00+07:00",
+  "diperbarui": "2026-10-23",
   "snapshotLabel": "23 Oktober 2026 · mapping historis selesai",
   "diperbaruiOleh": "Thisya memutuskan mapping; Claude menyimpan & menghitung dampak",
   "ringkasanStatus": {
-    "judul": "Mapping data lama selesai: 1.125 baris siap diimpor",
-    "teks": "Semua nama role, status, dan sumber kandidat di Sheet lama sudah dipetakan oleh HR. Baris yang siap dipindah ke arsip ATS naik dari 105 menjadi 1.125. Sisanya tertahan karena kolom status di Sheet kosong (tidak ditebak). Hasil terbukti lokal 25 dari 46 (54,3%)."
+    "judul": "PDF psikotes bisa diunggah dan dilihat di kartu kandidat",
+    "teks": "HR bisa mengunggah PDF laporan psikotes, melihatnya langsung, dan menghapusnya. Hanya HR yang berhak atas role yang bisa membuka. Hasil terbukti lokal 26 dari 46 (56,5%)."
   },
-  "ringkasan": "Mapping historis selesai (ats-16). 25/46 hasil terbukti lokal. Berikutnya M5b (PDF psikotes di Supabase Storage), lalu M6 dan M7.",
+  "ringkasan": "M5b-1 selesai (ats-32). 26/46 hasil terbukti lokal. Berikutnya M6 (akses HR/Hiring Manager/C-level), lalu M7.",
   "yangBisaDitunjukkan": [
     "Dicoba Claude (data contoh): tempel kode di Pengaturan; kode dobel (beda huruf) otomatis dilewati.",
     "Dicoba Claude (data contoh): Ambil kode aktivasi di kartu Psikotes → kode muncul + Salin; klik lagi = kode yang sama.",
@@ -52,7 +52,16 @@
       "manfaat": "Nama/email, role, PIC, source, status, next action, bulan berjalan dan carry-over kandidat lama.",
       "minggu": "W2 Sep 2026",
       "catatan": "Approval historis d4e119b; bukan uji ulang sesi report. QA Mac 19 Okt: tampilan bulan berjalan dan carry-over dicoba dengan fixture; bukan pengujian ulang data asli.",
-      "bukti": []
+      "bukti": [
+        {
+          "file": "qa-mac-20261019-tracker.png",
+          "ket": "19 Okt · dicoba Codex di Mac · bulan berjalan; data contoh, bukan kandidat asli."
+        },
+        {
+          "file": "qa-mac-20261019-carry-over.png",
+          "ket": "19 Okt · dicoba Codex · 5 kandidat contoh dari periode sebelumnya tetap dapat dilihat."
+        }
+      ]
     },
     {
       "id": "ats-2",
@@ -74,7 +83,12 @@
       "manfaat": "Paste kandidat, validasi email dan duplikat, cek riwayat role/episode sebelum penyimpanan.",
       "minggu": "W2 Sep 2026",
       "catatan": " QA Mac 19 Okt: validasi input email dicoba dengan 2 baris buatan; tanpa penyimpanan atau pemeriksaan riwayat asli.",
-      "bukti": []
+      "bukti": [
+        {
+          "file": "qa-mac-20261019-validasi.png",
+          "ket": "19 Okt · dicoba Codex · 2 baris buatan, 1 email salah ditandai; tidak disimpan. Riwayat kandidat asli tidak diuji."
+        }
+      ]
     },
     {
       "id": "ats-4",
@@ -164,7 +178,7 @@
       "catatan": "2f4d363 / 6425268. Manual ≠ otomatis.",
       "bukti": [
         {
-          "file": "assets/sync-contoh-3-sehat.png",
+          "file": "../demo/sync-contoh-3-sehat.png",
           "ket": "Bukti checkpoint data contoh, bukan kandidat asli."
         }
       ]
@@ -202,7 +216,7 @@
       "catatan": "3d2c8dc, 8 Okt.",
       "bukti": [
         {
-          "file": "assets/alur-status-role-ui-contoh.png",
+          "file": "../demo/alur-status-role-ui-contoh.png",
           "ket": "UI contoh: status role dan kesiapan arsip."
         }
       ]
@@ -240,11 +254,11 @@
       "catatan": "9f0cc8f, 13 Okt. Tampilan cepat (bulan berjalan bawaan, bulan lalu, semua 2026, pre-2026, email invalid, duplikat, perlu review), 10 filter, pagination bawaan 100 (filter sebelum pagination), kolom Kandidat, panel filter mobile. 23 tes logika + interaksi nyata di browser pada 450 baris SINTETIS (di luar repo). BELUM dicoba di halaman Import dengan Sheet asli (butuh izin karena menyentuh data kandidat asli) — satu langkah buat Lathisya: buka /candidate-tracker/import. Karena itu belum berstatus terbukti lokal.",
       "bukti": [
         {
-          "file": "assets/import-review-ux-desktop.png",
+          "file": "../demo/import-review-ux-desktop.png",
           "ket": "Data SINTETIS (example.test), bukan kandidat asli."
         },
         {
-          "file": "assets/import-review-ux-mobile.png",
+          "file": "../demo/import-review-ux-mobile.png",
           "ket": "Mobile: panel filter bisa dibuka-tutup; halaman tidak melebar."
         }
       ]
@@ -293,11 +307,11 @@
       "catatan": "dc5a336, 13 Okt. Halaman /candidate-tracker/aktivitas: shortlist hari ini / minggu ini (Sen–Min) / bulan ini dan 7 hari terakhir, rincian per PIC/role/source. Tanggal = entri Screening pertama (zona Jakarta). Hanya kandidat aktif; arsip tidak ikut. Terbukti lokal dengan 14 kandidat CONTOH di database lokal (sudah dihapus; data asli identik) dan dicocokkan dengan hitungan terpisah. BELUM diuji dengan data kandidat aktif production (tidak terjangkau; database lokal hanya 1 kandidat uji). Belum online.",
       "bukti": [
         {
-          "file": "assets/aktivitas-pipeline-desktop.png",
+          "file": "../demo/aktivitas-pipeline-desktop.png",
           "ket": "Data CONTOH (Sample Role A/B), bukan kandidat asli; tab Minggu ini."
         },
         {
-          "file": "assets/aktivitas-pipeline-mobile.png",
+          "file": "../demo/aktivitas-pipeline-mobile.png",
           "ket": "Tampilan mobile; tidak ada geser horizontal."
         }
       ]
@@ -313,7 +327,7 @@
       "catatan": "dc5a336, 13 Okt. Halaman yang sama: ringkasan status terkini, per status (13 status baku), dan per role. Skip, Cancelled (mundur) dan Cancelled (posisi ditutup) dihitung terpisah; status tidak dikenal tidak ditebak; tanpa persentase/rate. Alias status lama dibaca tanpa menulis ulang data. Hanya angka dari data contoh; belum diuji dengan data production; belum online. Alasan Skip, hired rate dan drop-off belum tersedia (penyebut/sumber belum disepakati).",
       "bukti": [
         {
-          "file": "assets/aktivitas-pipeline-desktop.png",
+          "file": "../demo/aktivitas-pipeline-desktop.png",
           "ket": "Bagian Pipeline & outcome pada data CONTOH."
         }
       ]
@@ -349,7 +363,16 @@
       "manfaat": "HR melihat arsip terpisah dari pipeline aktif: jumlah per kelompok status dan per role, cakupan terhadap baris Sheet, waktu sinkron terakhir, dan data yang belum lengkap.",
       "minggu": "W2 Okt 2026",
       "catatan": "Hanya ringkasan arsip, BUKAN dashboard lengkap: tidak ada lead time, funnel, tren, atau beban per PIC (tertulis di halaman). Status dipetakan hanya lewat mapping terkonfirmasi. Angka (29 arsip, semuanya Skip; 27 Marketing Associate + 2 HRGA Manager) cocok dengan hitungan terpisah dari data mentah. Lokal saja; belum online.",
-      "bukti": []
+      "bukti": [
+        {
+          "file": "../demo/ringkasan-arsip-desktop.png",
+          "ket": "Tampilan desktop; hanya angka agregat, tanpa nama/email kandidat."
+        },
+        {
+          "file": "../demo/ringkasan-arsip-mobile.png",
+          "ket": "Tampilan mobile; tidak ada geser horizontal."
+        }
+      ]
     },
     {
       "id": "ats-24",
@@ -362,11 +385,11 @@
       "catatan": "20 Okt (Claude). /candidate-tracker/tindakan lengkap: lewat tenggat, tenggat hari ini/besok, follow-up jatuh tempo, tidak merespons (M3) + belum dikirim assessment, belum dikumpulkan (lewat tenggat ditandai), menunggu review (M4a), Offering H+3, menunggu user. Daftar assessment BERDASARKAN CATATAN HR (belum dicocokkan otomatis dengan GForm — M4b). Dibatasi role yang boleh diakses; angka dicocokkan dengan hitungan SQL terpisah (data contoh).",
       "bukti": [
         {
-          "file": "assets/m3-20261020-perlu-tindakan.jpg",
+          "file": "m3-20261020-perlu-tindakan.jpg",
           "ket": "20 Okt · dicoba Claude · data contoh · tenggat & follow-up"
         },
         {
-          "file": "assets/m4a-20261020-perlu-tindakan.jpg",
+          "file": "m4a-20261020-perlu-tindakan.jpg",
           "ket": "20 Okt · dicoba Claude · data contoh · daftar assessment: belum dikirim, belum dikumpulkan (lewat tenggat), menunggu review"
         }
       ]
@@ -382,11 +405,11 @@
       "catatan": "20 Okt (Claude). Halaman kandidat: tombol 2/3/4/5 hari atau tanggal sendiri + keterangan; Selesai / Ubah tanggal / Batalkan dengan riwayat; label bila tahap kandidat berubah; default per role hanya mengisi pilihan awal (tidak memasang otomatis); benturan dua HR ditolak dengan pesan muat ulang. Bukti: dicoba langsung di browser Mac oleh Claude dengan role/kandidat CONTOH (SAMPLE-M3, dihapus lagi; sidik isi data lama identik sebelum/sesudah); 670/670 tes otomatis; hasil akhir dicek Codex 2 putaran (4 temuan diperbaiki, keputusan: lolos). DB lokal saja; belum online.",
       "bukti": [
         {
-          "file": "assets/m3-20261020-panel-kandidat.jpg",
+          "file": "m3-20261020-panel-kandidat.jpg",
           "ket": "20 Okt · dicoba Claude · data contoh · tenggat 3 hari, catatan follow-up, koreksi catatan"
         },
         {
-          "file": "assets/m3-20261020-tahap-berubah.jpg",
+          "file": "m3-20261020-tahap-berubah.jpg",
           "ket": "20 Okt · dicoba Claude · data contoh · tenggat lewat + peringatan tahap sudah berubah"
         }
       ]
@@ -402,7 +425,7 @@
       "catatan": "20 Okt (Claude). Catatan riwayat: reminder kandidat/user, catatan WhatsApp, tidak merespons, sudah merespons, keputusan di luar Atlas; satu jadwal follow-up aktif; 'tidak merespons' bertahan sampai dicatat 'sudah merespons' (reminder tidak menghapusnya); salah input dikoreksi, tidak dihapus. HANYA pencatatan — tidak ada pengiriman reminder otomatis. Bukti: dicoba langsung di browser Mac oleh Claude dengan role/kandidat CONTOH (SAMPLE-M3, dihapus lagi; sidik isi data lama identik sebelum/sesudah); 670/670 tes otomatis; hasil akhir dicek Codex 2 putaran (4 temuan diperbaiki, keputusan: lolos). DB lokal saja; belum online.",
       "bukti": [
         {
-          "file": "assets/m3-20261020-panel-kandidat.jpg",
+          "file": "m3-20261020-panel-kandidat.jpg",
           "ket": "20 Okt · dicoba Claude · data contoh · tanda tidak merespons tetap ada setelah reminder; koreksi mengembalikan tanda"
         }
       ]
@@ -418,7 +441,7 @@
       "catatan": "20 Okt (Claude). Alur assessment per role: pilih GForm/Psikotes/Technical Test + urutan + pola Bersamaan / GForm dulu / Berurutan; disimpan per role; alur dibekukan per kandidat saat mulai (perubahan role hanya untuk kandidat baru). Penanda dengan/tanpa AI scoring DITUNDA (tidak diklaim). Bukti: dicoba langsung di browser Mac oleh Claude dengan role/kandidat CONTOH (SAMPLE-M4, dihapus lagi; cadangan terbukti pulih; sidik isi data lama identik); 703/703 tes otomatis; uji aturan & benturan di database (dua HR bersamaan, HR lain mengubah status) lulus; dicek Codex: rencana 2 putaran, hasil akhir 2 putaran (2 temuan diperbaiki) → lolos. DB lokal; belum online.",
       "bukti": [
         {
-          "file": "assets/m4a-20261020-atur-alur.jpg",
+          "file": "m4a-20261020-atur-alur.jpg",
           "ket": "20 Okt · dicoba Claude · data contoh · atur alur assessment role"
         }
       ]
@@ -434,11 +457,11 @@
       "catatan": "20 Okt (Claude), SEBAGIAN: panel Assessment membaca tab rawdata_from_gform (Sheet asli, baca saja, hanya kolom email & timestamp — kolom C & B seperti rumus kolom Q HR) dan menampilkan 'Ada isian dengan email yang sama' sejak tanggal kirim + tombol Tandai dikumpulkan (tetap keputusan HR); isian lama / tanggal tak terbaca ditandai jelas. Baca langsung Sheet asli: 8.673 baris, 8.305 email unik, 104 timestamp teks tak terbaca. Kondisi 'terdeteksi' dicoba di browser dengan data TIRUAN; dengan Sheet asli kandidat contoh → 'belum ada isian'. 720/720 tes. Dicek Codex (rencana 1 putaran + hasil 2 putaran → lolos). BELUM: penanda di Perlu tindakan, form berbeda per role, kelengkapan psikotes/technical.",
       "bukti": [
         {
-          "file": "assets/m4b-20261023-gform-terdeteksi.png",
+          "file": "m4b-20261023-gform-terdeteksi.png",
           "ket": "23 Okt · dicoba Claude · data TIRUAN · email kandidat ditemukan di jawaban GForm → HR memastikan lalu menekan Tandai sudah mengisi"
         },
         {
-          "file": "assets/m4b-20261020-gform-isian-lama.jpg",
+          "file": "m4b-20261020-gform-isian-lama.jpg",
           "ket": "20 Okt · dicoba Claude · data TIRUAN · hanya jawaban lama (sebelum dikirim) → tidak dianggap terkumpul"
         }
       ]
@@ -454,7 +477,7 @@
       "catatan": "20 Okt (Claude), SEBAGIAN: tiap tahap Belum dikirim → Dikirim (tanggal + tenggat per tahap, bawaan 3 hari/default role) → Dikumpulkan → Lolos/Tidak lolos; tahap berikutnya hanya terbuka lewat tombol 'Lolos → buka tahap berikutnya'; Tidak lolos menghentikan alur; koreksi dengan alasan & riwayat; Status HR tidak berubah. BELUM: pengiriman email tahap berikutnya (M4b / ats-30) — sekarang 'Dikirim' = dicatat HR. Bukti: dicoba langsung di browser Mac oleh Claude dengan role/kandidat CONTOH (SAMPLE-M4, dihapus lagi; cadangan terbukti pulih; sidik isi data lama identik); 703/703 tes otomatis; uji aturan & benturan di database (dua HR bersamaan, HR lain mengubah status) lulus; dicek Codex: rencana 2 putaran, hasil akhir 2 putaran (2 temuan diperbaiki) → lolos. DB lokal; belum online.",
       "bukti": [
         {
-          "file": "assets/m4a-20261020-panel-assessment.jpg",
+          "file": "m4a-20261020-panel-assessment.jpg",
           "ket": "20 Okt · dicoba Claude · data contoh · GForm lolos, tahap 2 dibuka, Psikotes lewat tenggat, Technical Test belum dikirim"
         }
       ]
@@ -481,15 +504,15 @@
       "catatan": "23 Okt (Claude). Pool kode aktivasi HRD Room per role dengan status Tersedia → Dicadangkan → Dipakai → Perlu reset → Tersedia; satu kode aktif per kandidat (klik ganda/bersamaan tidak dobel); kode sama tidak bisa masuk dua kali (beda huruf/role); mengembalikan / selesai reset wajib centang 'sudah dicek di HRD Room' + alasan; kode yang pernah diberikan tidak bisa dihapus; semua perubahan tercatat. Tombol 'Ambil kode aktivasi' di kartu Psikotes (tidak mengubah status assessment, tidak mengirim apa pun). Celah lama ditutup: API kode & kirim email kini wajib login HR + akses role; email psikotes gagal jelas bila stok habis (tidak lagi mengirim kode '—'). Bukti: dicoba langsung di browser Mac dengan role/kandidat CONTOH (SAMPLE-M5, dihapus; cadangan terbukti pulih; 25 tabel lama identik); uji aturan & balapan di database; 737/737 tes (email diuji dengan pengirim tiruan). Dicek Codex: rencana 2 putaran + hasil 2 putaran → lolos. DB lokal; belum online. Deteksi 'dipakai' otomatis dari activation_code_gform ditunda.",
       "bukti": [
         {
-          "file": "assets/m5a-20261023-kode-kandidat.png",
+          "file": "m5a-20261023-kode-kandidat.png",
           "ket": "23 Okt · dicoba Claude · data contoh · kode aktivasi di kartu Psikotes (dicadangkan, salin, tandai dipakai, kembalikan)"
         },
         {
-          "file": "assets/m5a-20261023-kembalikan-kode.png",
+          "file": "m5a-20261023-kembalikan-kode.png",
           "ket": "23 Okt · dicoba Claude · data contoh · kembalikan kode wajib centang pengecekan HRD Room + alasan"
         },
         {
-          "file": "assets/m5a-20261023-pool-pengaturan.png",
+          "file": "m5a-20261023-pool-pengaturan.png",
           "ket": "23 Okt · dicoba Claude · data contoh · daftar kode per status di Pengaturan"
         }
       ]
@@ -498,12 +521,15 @@
       "id": "ats-32",
       "kode": "M5",
       "nama": "Upload & preview PDF psikotes",
-      "status": "not_started",
+      "status": "verified_local",
       "kelompok": "Workflow lanjutan",
       "manfaat": "Simpan hasil mentah dengan akses sesuai role HR/User/C-level.",
       "minggu": "Target minggu belum ditetapkan",
-      "catatan": "Scope dari RENCANA-MODUL-LENGKAP.md; beberapa fitur ATS existing mungkin ada, integrasi target modul ini belum terbukti.",
-      "bukti": []
+      "catatan": "23 Okt (Claude). Kartu Psikotes: unggah PDF laporan (hanya PDF asli, maks 20 MB), lihat PDF langsung di halaman, hapus dengan konfirmasi. Disimpan di penyimpanan privat lokal; hanya HR yang login dan berhak atas role yang bisa membuka (tautan berlaku 5 menit). Hapus gagal → berkas tetap tampil dengan \"Coba hapus lagi\". Pintu lama tanpa login ditutup. Data contoh, sudah dihapus. Codex: rencana 2 putaran + hasil lolos.",
+      "bukti": [
+        "assets/m5b-20261023-pdf-terunggah.png",
+        "assets/m5b-20261023-pratinjau-pdf.png"
+      ]
     },
     {
       "id": "ats-33",
@@ -513,7 +539,7 @@
       "kelompok": "Workflow lanjutan",
       "manfaat": "Ringkasan otomatis plus PDF sumber; download HRD Room tetap manual bila tidak ada integrasi resmi.",
       "minggu": "Target minggu belum ditetapkan",
-      "catatan": "Scope dari RENCANA-MODUL-LENGKAP.md; beberapa fitur ATS existing mungkin ada, integrasi target modul ini belum terbukti.",
+      "catatan": "Ditunda ke M5b-2: ringkasan otomatis butuh contoh laporan HRD Room yang disamarkan + jawaban apakah \"RCSE\" = format Creative. Hasil lama tetap terbaca; penyimpanan hasil baru diblokir sampai tervalidasi.",
       "bukti": []
     },
     {
