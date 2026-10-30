@@ -4,8 +4,8 @@
   "snapshotLabel": "23 Oktober 2026 · mapping historis selesai",
   "diperbaruiOleh": "Thisya memutuskan mapping; Claude menyimpan & menghitung dampak",
   "ringkasanStatus": {
-    "judul": "Offering, kontrak, dan email kandidat (mode uji) siap dicoba",
-    "teks": "HR kini mencatat offering sampai kontrak, dan menyiapkan email kandidat dengan pratinjau. Email masih mode uji: masuk kotak keluar uji, tidak terkirim ke kandidat. Hasil terbukti lokal 36 dari 46 (78,3%)."
+    "judul": "Lead time & tahap yang macet bisa dilihat",
+    "teks": "HR kini bisa melihat berapa lama kandidat tinggal di tiap tahap, tahap mana yang paling lama, dan kandidat berhenti di tahap mana beserta kategori alasannya. Hasil terbukti lokal 38 dari 46 (82,6%)."
   },
   "ringkasan": "M7-2 (ats-40) dan M7-3 (ats-29/30/38) selesai. 36/46 hasil terbukti lokal. Berikutnya lead time & bottleneck (ats-22/23), GForm di Perlu tindakan (ats-28), Import Review (ats-17).",
   "yangBisaDitunjukkan": [
@@ -289,23 +289,28 @@
       "id": "ats-22",
       "kode": "M2",
       "nama": "Lead time dari Stage Events",
-      "status": "not_started",
+      "status": "verified_local",
       "kelompok": "Workflow lanjutan",
       "manfaat": "Waktu screening → kirim → submit → review → user → interview → keputusan → offering; bukan tanggal AI scoring.",
       "minggu": "Target minggu belum ditetapkan",
-      "catatan": "13 Okt, SEBAGIAN (status tetap belum dikerjakan): hanya \"Total waktu sampai Hired\" (Screening pertama → Hired pertama dari riwayat status) yang tersedia di /candidate-tracker/tindakan, terbukti lokal dengan data contoh. Lead time antar tahap lain (assessment, submit, review, recap, respons user, interview, keputusan, offering) BELUM — sumber tanggal tiap tahap dan definisinya belum disepakati.",
-      "bukti": []
+      "catatan": "30 Okt (Claude). Halaman \"Lead time & hambatan\" (filter role): lama di tiap tahap dari riwayat status (median, rata-rata, terlama, sedang di tahap, sekarang lebih lama dari median), assessment dikirim→dikumpulkan→diputuskan, offering dikirim→dijawab. Hari kalender WIB; tanggal rusak tidak ditebak; kembali ke tahap sama dihitung satu kandidat. Data <5 kandidat ditandai jangan disimpulkan. Codex: hasil 2 putaran (2 temuan hitung → diperbaiki) → lolos.",
+      "bukti": [
+        "assets/lt-20261030-halaman.png",
+        "assets/lt-20261030-hp.png"
+      ]
     },
     {
       "id": "ats-23",
       "kode": "M2",
       "nama": "Bottleneck & analisis alasan",
-      "status": "not_started",
+      "status": "verified_local",
       "kelompok": "Workflow lanjutan",
       "manfaat": "Kandidat lama tidak bergerak, tahap terlambat, respons user, drop-off dan reason group per role.",
       "minggu": "Target minggu belum ditetapkan",
-      "catatan": "13 Okt, SEBAGIAN (status tetap belum dikerjakan): \"Skip per tahap\" dan \"kandidat lama tidak bergerak\" tersedia di /candidate-tracker/tindakan (terbukti lokal, data contoh). Belum: tahap yang terlambat (butuh deadline), drop-off per tahap, reason group per role (alasan untuk kandidat aktif belum tersimpan terstruktur).",
-      "bukti": []
+      "catatan": "30 Okt (Claude). Di halaman yang sama: tahap paling lama (bottleneck, minimal 3 kandidat, On Hold tidak dihitung), jumlah kandidat yang sekarang melewati median tahapnya, assessment lewat tenggat, berhenti di tahap mana (Skip/mundur/posisi ditutup) dan kategori alasan per role dari Tutup proses — catatan internal tidak dibaca. Persentase (hired rate, drop-off %) belum: penyebut belum disepakati.",
+      "bukti": [
+        "assets/lt-20261030-halaman.png"
+      ]
     },
     {
       "id": "ats-46",
@@ -602,8 +607,8 @@
     "catatan": "Hasil berbobot sama hanya untuk checklist. Bukan estimasi waktu atau persentase seluruh produk selesai. Angka/bukti aktual dari HANDOFF; M2–M8 scope dari rencana resmi."
   },
   "sedangDikerjakan": {
-    "judul": "Berikutnya: M5b (PDF & ringkasan psikotes) atau M6",
-    "detail": "Upload PDF psikotes di ATS lama memakai penyimpanan cloud (Vercel Blob) yang sengaja dimatikan di Mac — perlu keputusan tempat simpan sebelum M5b."
+    "judul": "Berikutnya: pengingat GForm di Perlu tindakan (ats-28), lalu Import Review (ats-17)",
+    "detail": "Dikerjakan Claude di lokal dengan data contoh."
   },
   "keputusanDibutuhkan": [
     "Apakah Jakmall punya team Vercel dan organisasi Supabase milik kantor (atau akan dibuat/dibayar kantor), dan persetujuan biaya minimum. Tanpa itu, uji online tetap ditahan dan HR memakai versi lokal.",
@@ -632,9 +637,9 @@
     }
   ],
   "langkahBerikutnya": [
-    "Thisya: lihat 3 screenshot M5a dan jawab 1 pertanyaan alur.",
-    "Claude: rencana M5b (upload/preview PDF + ringkasan) — butuh keputusan tempat simpan berkas; sambil menunggu, M6 (akses HR/Hiring Manager/C-level) bisa direncanakan.",
-    "Email assessment (ats-30) menunggu izin email."
+    "Thisya: lihat screenshot Lead time & hambatan dan jawab 1 pertanyaan alur.",
+    "Claude: pengingat GForm di Perlu tindakan (ats-28), lalu Import Review (ats-17).",
+    "Butuh izin Thisya: online (ats-19) dan pindah penuh dari Sheet (ats-41–44)."
   ],
-  "pertanyaanAlur": "Email kandidat: pilih jenis → lihat pratinjau → kirim. Email tidak lanjut hanya setelah proses ditutup Skip, tanpa alasan internal. Alurnya bener gini?"
+  "pertanyaanAlur": "Lead time dihitung dari tanggal status berubah (hari kalender), dan tahap paling lama baru disebut kalau minimal 3 kandidat sudah melewatinya. Alurnya bener gini?"
 }
