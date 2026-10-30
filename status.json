@@ -4,10 +4,10 @@
   "snapshotLabel": "23 Oktober 2026 · mapping historis selesai",
   "diperbaruiOleh": "Thisya memutuskan mapping; Claude menyimpan & menghitung dampak",
   "ringkasanStatus": {
-    "judul": "Interview, keputusan, dan alasan penolakan tercatat rapi",
-    "teks": "HR kini mencatat tiap interview dan keputusan C-level dari chat/lisan. Menolak, kandidat mundur, atau posisi ditutup wajib disertai kategori alasan; catatan internal tidak pernah terkirim ke kandidat. Hasil terbukti lokal 32 dari 46 (69,6%)."
+    "judul": "Offering, kontrak, dan email kandidat (mode uji) siap dicoba",
+    "teks": "HR kini mencatat offering sampai kontrak, dan menyiapkan email kandidat dengan pratinjau. Email masih mode uji: masuk kotak keluar uji, tidak terkirim ke kandidat. Hasil terbukti lokal 36 dari 46 (78,3%)."
   },
-  "ringkasan": "M6-3 (ats-36) dan M7-1 (ats-37, ats-39) selesai. 32/46 hasil terbukti lokal. Berikutnya offering & kontrak (ats-40), lalu email dengan kotak surat palsu (ats-30/38).",
+  "ringkasan": "M7-2 (ats-40) dan M7-3 (ats-29/30/38) selesai. 36/46 hasil terbukti lokal. Berikutnya lead time & bottleneck (ats-22/23), GForm di Perlu tindakan (ats-28), Import Review (ats-17).",
   "yangBisaDitunjukkan": [
     "Dicoba Claude (data contoh): tempel kode di Pengaturan; kode dobel (beda huruf) otomatis dilewati.",
     "Dicoba Claude (data contoh): Ambil kode aktivasi di kartu Psikotes → kode muncul + Salin; klik lagi = kode yang sama.",
@@ -377,23 +377,28 @@
       "id": "ats-29",
       "kode": "M4",
       "nama": "Lolos → kirim tahap berikutnya",
-      "status": "in_progress",
+      "status": "verified_local",
       "kelompok": "Workflow lanjutan",
       "manfaat": "Deadline per tahap; HR memutuskan kelulusan sebelum pengiriman berikutnya.",
       "minggu": "Target minggu belum ditetapkan",
-      "catatan": "20 Okt (Claude), SEBAGIAN: tiap tahap Belum dikirim → Dikirim (tanggal + tenggat per tahap, bawaan 3 hari/default role) → Dikumpulkan → Lolos/Tidak lolos; tahap berikutnya hanya terbuka lewat tombol 'Lolos → buka tahap berikutnya'; Tidak lolos menghentikan alur; koreksi dengan alasan & riwayat; Status HR tidak berubah. BELUM: pengiriman email tahap berikutnya (M4b / ats-30) — sekarang 'Dikirim' = dicatat HR. Bukti: dicoba langsung di browser Mac oleh Claude dengan role/kandidat CONTOH (SAMPLE-M4, dihapus lagi; cadangan terbukti pulih; sidik isi data lama identik); 703/703 tes otomatis; uji aturan & benturan di database (dua HR bersamaan, HR lain mengubah status) lulus; dicek Codex: rencana 2 putaran, hasil akhir 2 putaran (2 temuan diperbaiki) → lolos. DB lokal; belum online.",
-      "bukti": []
+      "catatan": "30 Okt (Claude). Tahap assessment yang terbuka punya tombol \"Kirim email\" yang langsung menyiapkan pratinjau email tahap itu; email hanya bisa dikirim untuk tahap yang sedang terbuka dan kandidat yang prosesnya masih berjalan.",
+      "bukti": [
+        "assets/m73-20261030-pratinjau.png"
+      ]
     },
     {
       "id": "ats-30",
       "kode": "M4",
       "nama": "Email assessment: preview, confirm, log, retry",
-      "status": "not_started",
+      "status": "verified_local",
       "kelompok": "Workflow lanjutan",
       "manfaat": "Penerima/template dikonfirmasi; kegagalan tercatat jujur. Butuh inventaris link Form Responses.",
       "minggu": "Target minggu belum ditetapkan",
-      "catatan": "Scope dari RENCANA-MODUL-LENGKAP.md; beberapa fitur ATS existing mungkin ada, integrasi target modul ini belum terbukti.",
-      "bukti": []
+      "catatan": "30 Okt (Claude). Kartu \"Email ke kandidat\": pilih jenis (GForm/Psikotes/Technical/Interview) → pratinjau → kirim → catatan → coba lagi. MODE UJI: email masuk Kotak keluar (uji), tidak terkirim ke kandidat. Yang dikirim sama persis dengan pratinjau; kode psikotes diambil otomatis; klik ganda tidak dobel. Semua jalur kirim sungguhan (email lama & undangan Calendar) dikunci sampai ada izin. Codex: rencana + hasil 2 putaran → lolos.",
+      "bukti": [
+        "assets/m73-20261030-pratinjau.png",
+        "assets/m73-20261030-kotak-keluar.png"
+      ]
     },
     {
       "id": "ats-31",
@@ -495,12 +500,14 @@
       "id": "ats-38",
       "kode": "M7",
       "nama": "Email rejection: preview → confirm → send → log",
-      "status": "not_started",
+      "status": "verified_local",
       "kelompok": "Workflow lanjutan",
       "manfaat": "Template GForm/psikotes/technical/interview; recipient/pengirim/waktu/success/failure, tidak mengirim komentar internal mentah.",
       "minggu": "Target minggu belum ditetapkan",
-      "catatan": "Scope dari RENCANA-MODUL-LENGKAP.md; beberapa fitur ATS existing mungkin ada, integrasi target modul ini belum terbukti.",
-      "bukti": []
+      "catatan": "30 Okt (Claude). Email tidak lanjut hanya bisa disiapkan setelah proses ditutup sebagai Skip; isinya profesional dan TIDAK memuat kategori/alasan/catatan internal. Tombol \"Siapkan email tidak lanjut\" di kartu Proses ditutup. Mode uji (kotak keluar uji).",
+      "bukti": [
+        "assets/m73-20261030-kotak-keluar.png"
+      ]
     },
     {
       "id": "ats-39",
@@ -519,12 +526,15 @@
       "id": "ats-40",
       "kode": "M7",
       "nama": "Offering & kontrak handoff",
-      "status": "not_started",
+      "status": "verified_local",
       "kelompok": "Workflow lanjutan",
       "manfaat": "C-level kirim offering; HR catat sent/accepted/declined, respons H+3, dokumen dan jadwal kontrak; Apps Script kontrak bisa tetap awal.",
       "minggu": "Target minggu belum ditetapkan",
-      "catatan": "Scope dari RENCANA-MODUL-LENGKAP.md; beberapa fitur ATS existing mungkin ada, integrasi target modul ini belum terbukti.",
-      "bukti": []
+      "catatan": "30 Okt (Claude). Kartu \"Offering & kontrak\": HR mencatat offering terkirim (oleh C-level), batas jawaban otomatis H+3 (merah bila lewat; sama dengan pengingat di Perlu tindakan), jawaban diterima/ditolak + alasan, lalu data kontrak (tanggal tanda tangan, mulai kerja, tautan dokumen). Satu offering aktif per kandidat, dua HR bersamaan tidak saling timpa, riwayat menyimpan nilai sebelum/sesudah. Apps Script kontrak tetap dipakai. Codex: rencana + hasil 2 putaran → lolos.",
+      "bukti": [
+        "assets/m72-20261030-lewat-h3.png",
+        "assets/m72-20261030-kontrak.png"
+      ]
     },
     {
       "id": "ats-41",
@@ -626,5 +636,5 @@
     "Claude: rencana M5b (upload/preview PDF + ringkasan) — butuh keputusan tempat simpan berkas; sambil menunggu, M6 (akses HR/Hiring Manager/C-level) bisa direncanakan.",
     "Email assessment (ats-30) menunggu izin email."
   ],
-  "pertanyaanAlur": "Menolak/mundur/posisi ditutup sekarang wajib pilih kategori alasan dulu (catatan internal tidak dikirim ke kandidat). Alurnya bener gini?"
+  "pertanyaanAlur": "Email kandidat: pilih jenis → lihat pratinjau → kirim. Email tidak lanjut hanya setelah proses ditutup Skip, tanpa alasan internal. Alurnya bener gini?"
 }
