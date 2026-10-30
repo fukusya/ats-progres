@@ -4,10 +4,10 @@
   "snapshotLabel": "23 Oktober 2026 · mapping historis selesai",
   "diperbaruiOleh": "Thisya memutuskan mapping; Claude menyimpan & menghitung dampak",
   "ringkasanStatus": {
-    "judul": "Hiring Manager & C-level bisa login dengan akses lihat saja",
-    "teks": "Ada tiga peran: HR, Hiring Manager, dan C-level. Hiring Manager dan C-level hanya melihat kandidat di role yang diberikan, tanpa bisa mengubah data. Semua data kini wajib login. Hasil terbukti lokal 27 dari 46 (58,7%)."
+    "judul": "Ringkasan psikotes otomatis + komentar dari Hiring Manager & C-level",
+    "teks": "PDF psikotes kini bisa dibaca otomatis jadi ringkasan (IQ, DISC, Kraepelin, sikap kerja) dan disalin ke Sheet. Hiring Manager dan C-level bisa memberi komentar dan rekomendasi tanpa mengubah status. Hasil terbukti lokal 29 dari 46 (63,0%)."
   },
-  "ringkasan": "M6-1 selesai (ats-34). 27/46 hasil terbukti lokal. Berikutnya M6-2: rekomendasi & komentar user (ats-35), lalu panel interview (ats-36).",
+  "ringkasan": "M5b-2 (ats-33) dan M6-2 (ats-35) selesai. 29/46 hasil terbukti lokal. Berikutnya M6-3 panel interview (ats-36), lalu M7.",
   "yangBisaDitunjukkan": [
     "Dicoba Claude (data contoh): tempel kode di Pengaturan; kode dobel (beda huruf) otomatis dilewati.",
     "Dicoba Claude (data contoh): Ambil kode aktivasi di kartu Psikotes → kode muncul + Salin; klik lagi = kode yang sama.",
@@ -424,12 +424,14 @@
       "id": "ats-33",
       "kode": "M5",
       "nama": "Extractor RCSE & Final/general",
-      "status": "not_started",
+      "status": "verified_local",
       "kelompok": "Workflow lanjutan",
       "manfaat": "Ringkasan otomatis plus PDF sumber; download HRD Room tetap manual bila tidak ada integrasi resmi.",
       "minggu": "Target minggu belum ditetapkan",
-      "catatan": "Ditunda ke M5b-2: ringkasan otomatis butuh contoh laporan HRD Room yang disamarkan + jawaban apakah \"RCSE\" = format Creative. Hasil lama tetap terbaca; penyimpanan hasil baru diblokir sampai tervalidasi.",
-      "bukti": []
+      "catatan": "30 Okt (Claude). Tombol \"Baca ringkasan\" di tiap PDF psikotes: IQ, Verbal/Numerik/Spasial, DISC, Kraepelin, semua nilai psikogram, sikap kerja >3, Penyelesaian Masalah. Nilai yang tidak ketemu ditandai \"tidak terbaca\" (tidak dianggap 0). Tombol salin format umum & format RCSE (sama dengan ekstraktor lama). Ringkasan lama hanya ditimpa setelah konfirmasi. Dicoba dengan PDF HRD Room asli (diolah lokal, tidak dipublikasi): 26/26 aspek terbaca. Bug unggah PDF HRD Room ketemu & diperbaiki. Codex lolos (2 putaran).",
+      "bukti": [
+        "assets/m5b2-20261030-ringkasan-psikotes.png"
+      ]
     },
     {
       "id": "ats-34",
@@ -451,12 +453,15 @@
       "id": "ats-35",
       "kode": "M6",
       "nama": "Review CV, assessment & komentar user",
-      "status": "not_started",
+      "status": "verified_local",
       "kelompok": "Workflow lanjutan",
       "manfaat": "Semua bukti/komentar menjadi satu riwayat kandidat sesuai akses.",
       "minggu": "Target minggu belum ditetapkan",
-      "catatan": "Scope dari RENCANA-MODUL-LENGKAP.md; beberapa fitur ATS existing mungkin ada, integrasi target modul ini belum terbukti.",
-      "bukti": []
+      "catatan": "30 Okt (Claude). Panel \"Komentar & rekomendasi\" di halaman kandidat untuk HR, Hiring Manager, C-level yang berhak atas role: komentar + rekomendasi Lanjut/Ragu/Tidak lanjut, ringkasan rekomendasi terakhir tiap orang. Tidak mengubah status kandidat. Hiring Manager/C-level melihat kolom \"Rekomendasimu\" di daftar kandidat. Klik ganda tidak dobel, maks 20 komentar/jam, hanya penulis yang bisa menghapus. Codex: rencana + hasil 2 putaran → lolos.",
+      "bukti": [
+        "assets/m62-20261030-komentar.png",
+        "assets/m62-20261030-daftar-hm.png"
+      ]
     },
     {
       "id": "ats-36",
@@ -613,5 +618,5 @@
     "Claude: rencana M5b (upload/preview PDF + ringkasan) — butuh keputusan tempat simpan berkas; sambil menunggu, M6 (akses HR/Hiring Manager/C-level) bisa direncanakan.",
     "Email assessment (ats-30) menunggu izin email."
   ],
-  "pertanyaanAlur": "Hiring Manager & C-level cukup MELIHAT daftar kandidat, detail, CV, dan PDF psikotes di role yang diberikan (tanpa tombol ubah). Alurnya bener gini?"
+  "pertanyaanAlur": "Rekomendasi Hiring Manager/C-level (Lanjut/Ragu/Tidak lanjut) hanya jadi masukan, status kandidat tetap diubah HR. Alurnya bener gini?"
 }
