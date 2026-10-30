@@ -4,10 +4,10 @@
   "snapshotLabel": "23 Oktober 2026 · mapping historis selesai",
   "diperbaruiOleh": "Thisya memutuskan mapping; Claude menyimpan & menghitung dampak",
   "ringkasanStatus": {
-    "judul": "Ringkasan psikotes otomatis + komentar dari Hiring Manager & C-level",
-    "teks": "PDF psikotes kini bisa dibaca otomatis jadi ringkasan (IQ, DISC, Kraepelin, sikap kerja) dan disalin ke Sheet. Hiring Manager dan C-level bisa memberi komentar dan rekomendasi tanpa mengubah status. Hasil terbukti lokal 29 dari 46 (63,0%)."
+    "judul": "Interview, keputusan, dan alasan penolakan tercatat rapi",
+    "teks": "HR kini mencatat tiap interview dan keputusan C-level dari chat/lisan. Menolak, kandidat mundur, atau posisi ditutup wajib disertai kategori alasan; catatan internal tidak pernah terkirim ke kandidat. Hasil terbukti lokal 32 dari 46 (69,6%)."
   },
-  "ringkasan": "M5b-2 (ats-33) dan M6-2 (ats-35) selesai. 29/46 hasil terbukti lokal. Berikutnya M6-3 panel interview (ats-36), lalu M7.",
+  "ringkasan": "M6-3 (ats-36) dan M7-1 (ats-37, ats-39) selesai. 32/46 hasil terbukti lokal. Berikutnya offering & kontrak (ats-40), lalu email dengan kotak surat palsu (ats-30/38).",
   "yangBisaDitunjukkan": [
     "Dicoba Claude (data contoh): tempel kode di Pengaturan; kode dobel (beda huruf) otomatis dilewati.",
     "Dicoba Claude (data contoh): Ambil kode aktivasi di kartu Psikotes → kode muncul + Salin; klik lagi = kode yang sama.",
@@ -467,23 +467,29 @@
       "id": "ats-36",
       "kode": "M6",
       "nama": "Panel/final interview & keputusan eksternal",
-      "status": "not_started",
+      "status": "verified_local",
       "kelompok": "Workflow lanjutan",
       "manfaat": "Panel HR+user; final jika C-level meminta; HR mencatat keputusan lisan/chat.",
       "minggu": "Target minggu belum ditetapkan",
-      "catatan": "Scope dari RENCANA-MODUL-LENGKAP.md; beberapa fitur ATS existing mungkin ada, integrasi target modul ini belum terbukti.",
-      "bukti": []
+      "catatan": "30 Okt (Claude). Panel \"Interview & keputusan\" di halaman kandidat: HR mencatat Interview HR/User/Panel/Final (tanggal, pewawancara, hasil, catatan) dan keputusan dari luar aplikasi (siapa, lewat lisan/chat/email/meeting, isi). Hiring Manager/C-level melihat tanpa tombol ubah. Tidak mengubah status otomatis. Klik ganda tidak dobel. Codex lolos (2 putaran).",
+      "bukti": [
+        "assets/m63-20261030-interview-hr.png",
+        "assets/m63-20261030-interview-hm.png"
+      ]
     },
     {
       "id": "ats-37",
       "kode": "M7",
       "nama": "Rejection flow & alasan internal",
-      "status": "not_started",
+      "status": "verified_local",
       "kelompok": "Workflow lanjutan",
       "manfaat": "Skip → kategori → alasan → catatan internal; pisahkan dari pesan profesional kepada kandidat.",
       "minggu": "Target minggu belum ditetapkan",
-      "catatan": "Scope dari RENCANA-MODUL-LENGKAP.md; beberapa fitur ATS existing mungkin ada, integrasi target modul ini belum terbukti.",
-      "bukti": []
+      "catatan": "30 Okt (Claude). Memilih Skip di kolom status membuka kotak \"Tutup proses\": wajib kategori alasan (mis. Hasil interview, Ekspektasi gaji), alasan opsional (wajib bila \"Lainnya\"), catatan internal khusus HR yang tidak pernah dipakai untuk pesan ke kandidat. Tahap terakhir tercatat otomatis. Dua HR bersamaan tidak saling timpa. Status yang dipasang lewat tabel massal bisa diisi alasannya belakangan. Codex: rencana + hasil 2 putaran → lolos.",
+      "bukti": [
+        "assets/m71-20261030-tutup-hr.png",
+        "assets/m71-20261030-tutup-hm.png"
+      ]
     },
     {
       "id": "ats-38",
@@ -500,12 +506,14 @@
       "id": "ats-39",
       "kode": "M7",
       "nama": "Withdraw & Position Closed",
-      "status": "not_started",
+      "status": "verified_local",
       "kelompok": "Workflow lanjutan",
       "manfaat": "Cancelled dibedakan dari perusahaan menolak; alasan dan tahap dicatat, bukan menambah rejection rate.",
       "minggu": "Target minggu belum ditetapkan",
-      "catatan": "Scope dari RENCANA-MODUL-LENGKAP.md; beberapa fitur ATS existing mungkin ada, integrasi target modul ini belum terbukti.",
-      "bukti": []
+      "catatan": "30 Okt (Claude). Kandidat mundur (Withdraw) dan Posisi ditutup punya kategori alasan sendiri, tahap terakhir tercatat, dan tidak menambah angka penolakan (analitik hanya menghitung Skip). Satu alur dengan ats-37.",
+      "bukti": [
+        "assets/m71-20261030-tutup-hr.png"
+      ]
     },
     {
       "id": "ats-40",
@@ -618,5 +626,5 @@
     "Claude: rencana M5b (upload/preview PDF + ringkasan) — butuh keputusan tempat simpan berkas; sambil menunggu, M6 (akses HR/Hiring Manager/C-level) bisa direncanakan.",
     "Email assessment (ats-30) menunggu izin email."
   ],
-  "pertanyaanAlur": "Rekomendasi Hiring Manager/C-level (Lanjut/Ragu/Tidak lanjut) hanya jadi masukan, status kandidat tetap diubah HR. Alurnya bener gini?"
+  "pertanyaanAlur": "Menolak/mundur/posisi ditutup sekarang wajib pilih kategori alasan dulu (catatan internal tidak dikirim ke kandidat). Alurnya bener gini?"
 }
