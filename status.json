@@ -1,6 +1,6 @@
 {
   "proyek": "Candidate Tracker → ATS",
-  "diperbarui": "2026-10-30",
+  "diperbarui": "2026-11-02",
   "snapshotLabel": "23 Oktober 2026 · mapping historis selesai",
   "diperbaruiOleh": "Thisya memutuskan mapping; Claude menyimpan & menghitung dampak",
   "ringkasanStatus": {
@@ -293,7 +293,7 @@
       "kelompok": "Workflow lanjutan",
       "manfaat": "Waktu screening → kirim → submit → review → user → interview → keputusan → offering; bukan tanggal AI scoring.",
       "minggu": "Target minggu belum ditetapkan",
-      "catatan": "30 Okt (Claude). Halaman \"Lead time & hambatan\" (filter role): lama di tiap tahap dari riwayat status (median, rata-rata, terlama, sedang di tahap, sekarang lebih lama dari median), assessment dikirim→dikumpulkan→diputuskan, offering dikirim→dijawab. Hari kalender WIB; tanggal rusak tidak ditebak; kembali ke tahap sama dihitung satu kandidat. Data <5 kandidat ditandai jangan disimpulkan. Codex: hasil 2 putaran (2 temuan hitung → diperbaiki) → lolos.",
+      "catatan": "30 Okt (Claude). Halaman \"Lead time & hambatan\" (filter role): lama di tiap tahap dari riwayat status (median, rata-rata, terlama, sedang di tahap, sekarang lebih lama dari median), assessment dikirim→dikumpulkan→diputuskan, offering dikirim→dijawab. Hari kalender WIB; tanggal rusak tidak ditebak; kembali ke tahap sama dihitung satu kandidat. Data <5 kandidat ditandai jangan disimpulkan. Codex: hasil 2 putaran (2 temuan hitung → diperbaiki) → lolos. REVISI 2 Nov (keputusan Thisya, sesi cabang a0c9db4): dihitung HARI KERJA Senin–Jumat (libur nasional tidak dikurangi); tahap paling lama = rata-rata tertinggi tanpa batas minimal kandidat; 'sekarang lebih lama' dibanding rata-rata. Tes lulus; tampilan revisi belum dicoba di browser (dicek saat UAT).",
       "bukti": [
         "assets/lt-20261030-halaman.png",
         "assets/lt-20261030-hp.png"
@@ -307,7 +307,7 @@
       "kelompok": "Workflow lanjutan",
       "manfaat": "Kandidat lama tidak bergerak, tahap terlambat, respons user, drop-off dan reason group per role.",
       "minggu": "Target minggu belum ditetapkan",
-      "catatan": "30 Okt (Claude). Di halaman yang sama: tahap paling lama (bottleneck, minimal 3 kandidat, On Hold tidak dihitung), jumlah kandidat yang sekarang melewati median tahapnya, assessment lewat tenggat, berhenti di tahap mana (Skip/mundur/posisi ditutup) dan kategori alasan per role dari Tutup proses — catatan internal tidak dibaca. Persentase (hired rate, drop-off %) belum: penyebut belum disepakati.",
+      "catatan": "30 Okt (Claude). Di halaman yang sama: tahap paling lama (bottleneck, minimal 3 kandidat, On Hold tidak dihitung), jumlah kandidat yang sekarang melewati median tahapnya, assessment lewat tenggat, berhenti di tahap mana (Skip/mundur/posisi ditutup) dan kategori alasan per role dari Tutup proses — catatan internal tidak dibaca. Persentase (hired rate, drop-off %) belum: penyebut belum disepakati. REVISI 2 Nov (keputusan Thisya, sesi cabang a0c9db4): dihitung HARI KERJA Senin–Jumat (libur nasional tidak dikurangi); tahap paling lama = rata-rata tertinggi tanpa batas minimal kandidat; 'sekarang lebih lama' dibanding rata-rata. Tes lulus; tampilan revisi belum dicoba di browser (dicek saat UAT).",
       "bukti": [
         "assets/lt-20261030-halaman.png"
       ]
@@ -641,5 +641,5 @@
     "Claude: pengingat GForm di Perlu tindakan (ats-28), lalu Import Review (ats-17).",
     "Butuh izin Thisya: online (ats-19) dan pindah penuh dari Sheet (ats-41–44)."
   ],
-  "pertanyaanAlur": "Lead time dihitung dari tanggal status berubah (hari kalender), dan tahap paling lama baru disebut kalau minimal 3 kandidat sudah melewatinya. Alurnya bener gini?"
+  "pertanyaanAlur": "Lead time sekarang dihitung hari kerja (Senin–Jumat) dan tahap paling lama memakai rata-rata. Halaman ini nanti dicek saat UAT."
 }
