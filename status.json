@@ -4,8 +4,8 @@
   "snapshotLabel": "23 Oktober 2026 · mapping historis selesai",
   "diperbaruiOleh": "Thisya memutuskan mapping; Claude menyimpan & menghitung dampak",
   "ringkasanStatus": {
-    "judul": "Lead time & tahap yang macet bisa dilihat",
-    "teks": "HR kini bisa melihat berapa lama kandidat tinggal di tiap tahap, tahap mana yang paling lama, dan kandidat berhenti di tahap mana beserta kategori alasannya. Hasil terbukti lokal 38 dari 46 (82,6%)."
+    "judul": "Pengingat GForm di Perlu tindakan",
+    "teks": "HR bisa memeriksa sekaligus kandidat mana yang sudah mengisi GForm tapi belum ditandai. Hasil terbukti lokal 39 dari 46 (84,8%)."
   },
   "ringkasan": "M7-2 (ats-40) dan M7-3 (ats-29/30/38) selesai. 36/46 hasil terbukti lokal. Berikutnya lead time & bottleneck (ats-22/23), GForm di Perlu tindakan (ats-28), Import Review (ats-17).",
   "yangBisaDitunjukkan": [
@@ -371,12 +371,14 @@
       "id": "ats-28",
       "kode": "M4",
       "nama": "GForm & pemantauan submission",
-      "status": "in_progress",
+      "status": "verified_local",
       "kelompok": "Workflow lanjutan",
       "manfaat": "Form berbeda per role; cocokkan normalized email melalui indeks rawdata_from_gform; semua tes wajib harus terkumpul.",
       "minggu": "Target minggu belum ditetapkan",
-      "catatan": "20 Okt (Claude), SEBAGIAN: panel Assessment membaca tab rawdata_from_gform (Sheet asli, baca saja, hanya kolom email & timestamp — kolom C & B seperti rumus kolom Q HR) dan menampilkan 'Ada isian dengan email yang sama' sejak tanggal kirim + tombol Tandai dikumpulkan (tetap keputusan HR); isian lama / tanggal tak terbaca ditandai jelas. Baca langsung Sheet asli: 8.673 baris, 8.305 email unik, 104 timestamp teks tak terbaca. Kondisi 'terdeteksi' dicoba di browser dengan data TIRUAN; dengan Sheet asli kandidat contoh → 'belum ada isian'. 720/720 tes. Dicek Codex (rencana 1 putaran + hasil 2 putaran → lolos). BELUM: penanda di Perlu tindakan, form berbeda per role, kelengkapan psikotes/technical.",
-      "bukti": []
+      "catatan": "2 Nov (Claude). Selesai: (1) panel Assessment mendeteksi jawaban di rawdata_from_gform (20 Okt); (2) BARU: di Perlu tindakan bagian \"GForm sudah diisi, belum ditandai\" — tombol Periksa membaca jawaban GForm (hanya kolom email & waktu, cache 10 menit), menampilkan kandidat yang GForm-nya Dikirim dan sudah ada jawaban pada/sesudah tanggal kirim; gagal baca tampil sebagai kesalahan, bukan 'belum mengisi'; tanpa email di layar. Form berbeda per role tercakup karena tab gabungan semua form; kelengkapan tes wajib dijaga alur assessment (M4a). Belum: pencocokan otomatis psikotes & technical test (tetap catatan HR). Dicoba di browser dengan jawaban GForm TIRUAN; Codex LULUS.",
+      "bukti": [
+        "assets/m4b-20261102-gform-perlu-tindakan.png"
+      ]
     },
     {
       "id": "ats-29",
@@ -607,8 +609,8 @@
     "catatan": "Hasil berbobot sama hanya untuk checklist. Bukan estimasi waktu atau persentase seluruh produk selesai. Angka/bukti aktual dari HANDOFF; M2–M8 scope dari rencana resmi."
   },
   "sedangDikerjakan": {
-    "judul": "Berikutnya: pengingat GForm di Perlu tindakan (ats-28), lalu Import Review (ats-17)",
-    "detail": "Dikerjakan Claude di lokal dengan data contoh."
+    "judul": "Berikutnya: Import Review (ats-17)",
+    "detail": "Dikerjakan Claude di lokal."
   },
   "keputusanDibutuhkan": [
     "Apakah Jakmall punya team Vercel dan organisasi Supabase milik kantor (atau akan dibuat/dibayar kantor), dan persetujuan biaya minimum. Tanpa itu, uji online tetap ditahan dan HR memakai versi lokal.",
@@ -637,9 +639,9 @@
     }
   ],
   "langkahBerikutnya": [
-    "Thisya: lihat screenshot Lead time & hambatan dan jawab 1 pertanyaan alur.",
-    "Claude: pengingat GForm di Perlu tindakan (ats-28), lalu Import Review (ats-17).",
+    "Thisya: lihat screenshot pengingat GForm dan jawab 1 pertanyaan alur.",
+    "Claude: Import Review (ats-17).",
     "Butuh izin Thisya: online (ats-19) dan pindah penuh dari Sheet (ats-41–44)."
   ],
-  "pertanyaanAlur": "Lead time sekarang dihitung hari kerja (Senin–Jumat) dan tahap paling lama memakai rata-rata. Halaman ini nanti dicek saat UAT."
+  "pertanyaanAlur": "Pengingat GForm: HR klik \"Periksa jawaban GForm\", lalu buka kandidat dan tandai sendiri (tidak ditandai otomatis). Alurnya bener gini?"
 }
