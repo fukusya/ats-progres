@@ -4,8 +4,8 @@
   "snapshotLabel": "23 Oktober 2026 · mapping historis selesai",
   "diperbaruiOleh": "Thisya memutuskan mapping; Claude menyimpan & menghitung dampak",
   "ringkasanStatus": {
-    "judul": "Pengingat GForm di Perlu tindakan",
-    "teks": "HR bisa memeriksa sekaligus kandidat mana yang sudah mengisi GForm tapi belum ditandai. Hasil terbukti lokal 39 dari 46 (84,8%)."
+    "judul": "Import Review terbukti dengan Sheet asli",
+    "teks": "Halaman review impor sudah dicoba dengan Sheet asli (hanya baca). Hasil terbukti lokal 40 dari 46 (87,0%)."
   },
   "ringkasan": "M7-2 (ats-40) dan M7-3 (ats-29/30/38) selesai. 36/46 hasil terbukti lokal. Berikutnya lead time & bottleneck (ats-22/23), GForm di Perlu tindakan (ats-28), Import Review (ats-17).",
   "yangBisaDitunjukkan": [
@@ -223,11 +223,11 @@
       "id": "ats-17",
       "kode": "M1.5B-3",
       "nama": "Import Review UX lengkap",
-      "status": "done_dev_tested_local",
+      "status": "verified_local",
       "kelompok": "Fondasi & sync",
       "manfaat": "Quick view periode/pre-2026/masalah, filter tiap kolom, pagination seluruh hasil, kolom Kandidat dan mobile.",
       "minggu": "W3 Okt 2026",
-      "catatan": "9f0cc8f, 13 Okt. Tampilan cepat (bulan berjalan bawaan, bulan lalu, semua 2026, pre-2026, email invalid, duplikat, perlu review), 10 filter, pagination bawaan 100 (filter sebelum pagination), kolom Kandidat, panel filter mobile. 23 tes logika + interaksi nyata di browser pada 450 baris SINTETIS (di luar repo). BELUM dicoba di halaman Import dengan Sheet asli (butuh izin karena menyentuh data kandidat asli) — satu langkah buat Lathisya: buka /candidate-tracker/import. Karena itu belum berstatus terbukti lokal.",
+      "catatan": "9f0cc8f, 13 Okt (fitur) · 2 Nov dicoba Claude dengan Sheet ASLI atas izin Thisya (baca saja, tidak ada data ditulis, sidik DB identik): tampilan cepat Bulan lalu 515, Semua 2026 4.783, Pre-2026 117, Email invalid 9, Kemungkinan duplikat 80, Perlu review 3.775 dari 4.900 baris; halaman 100 per halaman (48 halaman, Berikutnya/Akhir benar); 12 filter; HP 390 px tidak melebar, panel filter bisa dibuka. Screenshot tetap data SINTETIS (data asli tidak dipublikasi).",
       "bukti": []
     },
     {
@@ -609,8 +609,8 @@
     "catatan": "Hasil berbobot sama hanya untuk checklist. Bukan estimasi waktu atau persentase seluruh produk selesai. Angka/bukti aktual dari HANDOFF; M2–M8 scope dari rencana resmi."
   },
   "sedangDikerjakan": {
-    "judul": "Berikutnya: Import Review (ats-17)",
-    "detail": "Dikerjakan Claude di lokal."
+    "judul": "Sisa modul butuh izin Thisya",
+    "detail": "Online (ats-19), pindah penuh dari Sheet (ats-41–44); ats-18 ditunda."
   },
   "keputusanDibutuhkan": [
     "Apakah Jakmall punya team Vercel dan organisasi Supabase milik kantor (atau akan dibuat/dibayar kantor), dan persetujuan biaya minimum. Tanpa itu, uji online tetap ditahan dan HR memakai versi lokal.",
@@ -639,9 +639,8 @@
     }
   ],
   "langkahBerikutnya": [
-    "Thisya: lihat screenshot pengingat GForm dan jawab 1 pertanyaan alur.",
-    "Claude: Import Review (ats-17).",
-    "Butuh izin Thisya: online (ats-19) dan pindah penuh dari Sheet (ats-41–44)."
+    "Thisya: jawab pertanyaan alur di report, lalu putuskan kapan mulai online (ats-19).",
+    "Claude: menunggu izin; sambil itu siap bantu UAT."
   ],
   "pertanyaanAlur": "Pengingat GForm: HR klik \"Periksa jawaban GForm\", lalu buka kandidat dan tandai sendiri (tidak ditandai otomatis). Alurnya bener gini?"
 }
