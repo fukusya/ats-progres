@@ -1,11 +1,11 @@
 {
   "proyek": "Candidate Tracker → ATS",
-  "diperbarui": "2026-11-17",
+  "diperbarui": "2026-11-25",
   "snapshotLabel": "23 Oktober 2026 · mapping historis selesai",
   "diperbaruiOleh": "Thisya memutuskan mapping; Claude menyimpan & menghitung dampak",
   "ringkasanStatus": {
-    "judul": "Website uji online",
-    "teks": "Aplikasi sudah bisa dicoba online di website uji dengan data contoh, terpisah dari data asli. Hasil terbukti lokal 40 dari 46 (87,0%)."
+    "judul": "Pengamanan data dan email diperkuat",
+    "teks": "Risiko skor kandidat tertimpa saat halaman gagal dimuat sudah ditutup. Email ke kandidat masih terkunci. Hasil terbukti lokal 40 dari 46 (87,0%)."
   },
   "ringkasan": "M7-2 (ats-40) dan M7-3 (ats-29/30/38) selesai. 36/46 hasil terbukti lokal. Berikutnya lead time & bottleneck (ats-22/23), GForm di Perlu tindakan (ats-28), Import Review (ats-17).",
   "yangBisaDitunjukkan": [
@@ -249,7 +249,7 @@
       "kelompok": "Fondasi & sync",
       "manfaat": "Cek hosting, database terpisah, login HR, biaya, akses dan pemulihan sebelum implementasi online.",
       "minggu": "W2 Okt 2026 · berjalan; target selesai belum ditetapkan",
-      "catatan": "17 Nov: tahap 4 dari 9 selesai. Website uji online di https://ats-uji.vercel.app, berisi data contoh saja, terpisah dari website & database lama. Dicoba Claude langsung: tanpa login semua halaman tertutup; setelah login halaman terbuka 1–3 detik; menyimpan komentar berhasil; email masuk kotak keluar uji, tidak ke kandidat. Belum di website uji: login Google, baca Sheet/GForm, AI scoring. Berikutnya: UAT Thisya.",
+      "catatan": "25 Nov: tahap 4 dari 9 selesai. Website uji https://ats-uji.vercel.app masih ada dan tertutup tanpa login. Database uji sedang dijeda karena 7 hari tidak dipakai, jadi versi terbaru belum bisa dicek setelah login. Jalur kirim email sungguhan sudah dibangun dan diuji tanpa email keluar, masih terkunci. Koreksi: uji dua HR sebelumnya belum memakai dua login asli; sudah diulang 25 Nov dan lulus. UAT di akhir.",
       "bukti": [
         "assets/ats19-20261117-web-uji-leadtime.png",
         "assets/ats19-20261117-web-uji-email.png"
@@ -563,7 +563,7 @@
       "kelompok": "Workflow lanjutan",
       "manfaat": "Rencana tiap 15 menit + manual; baris hilang tidak otomatis dihapus, perubahan ambigu ditahan. Jadwal nyata belum aktif.",
       "minggu": "Target minggu belum ditetapkan",
-      "catatan": "Scope dari RENCANA-MODUL-LENGKAP.md; beberapa fitur ATS existing mungkin ada, integrasi target modul ini belum terbukti.",
+      "catatan": "25 Nov: kerangka sinkron dan pengamannya teruji dengan data contoh; pintu untuk jadwal siap. Belum ada jadwal nyata dan belum memakai data asli (butuh izin). Paket hosting gratis hanya mengizinkan jadwal 1 kali sehari, sedangkan rencana tiap 15 menit.",
       "bukti": []
     },
     {
@@ -610,8 +610,8 @@
     "catatan": "Hasil berbobot sama hanya untuk checklist. Bukan estimasi waktu atau persentase seluruh produk selesai. Angka/bukti aktual dari HANDOFF; M2–M8 scope dari rencana resmi."
   },
   "sedangDikerjakan": {
-    "judul": "UAT di website uji",
-    "detail": "Thisya mencoba semua modul di https://ats-uji.vercel.app."
+    "judul": "Menunggu keputusan",
+    "detail": "Website uji, data asli, dan uji email membutuhkan izin. UAT dilakukan di akhir."
   },
   "keputusanDibutuhkan": [
     "Apakah Jakmall punya team Vercel dan organisasi Supabase milik kantor (atau akan dibuat/dibayar kantor), dan persetujuan biaya minimum. Tanpa itu, uji online tetap ditahan dan HR memakai versi lokal.",
@@ -640,8 +640,8 @@
     }
   ],
   "langkahBerikutnya": [
-    "Thisya: UAT di https://ats-uji.vercel.app (akun uji dari Claude).",
-    "Claude: perbaiki temuan UAT."
+    "Thisya: putuskan pengaktifan database uji.",
+    "Claude: kirim versi terbaru ke website uji dan cek setelah izin."
   ],
-  "pertanyaanAlur": "Website uji cukup dipakai untuk UAT dulu, sebelum menyambung Sheet, login Google, dan AI scoring?"
+  "pertanyaanAlur": ""
 }
