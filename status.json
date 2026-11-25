@@ -4,8 +4,8 @@
   "snapshotLabel": "23 Oktober 2026 · mapping historis selesai",
   "diperbaruiOleh": "Thisya memutuskan mapping; Claude menyimpan & menghitung dampak",
   "ringkasanStatus": {
-    "judul": "Pengamanan data dan email diperkuat",
-    "teks": "Risiko skor kandidat tertimpa saat halaman gagal dimuat sudah ditutup. Email ke kandidat masih terkunci. Hasil terbukti lokal 40 dari 46 (87,0%)."
+    "judul": "Website uji berjalan normal",
+    "teks": "Website uji sudah dicek dengan data contoh. Dua perbaikan tampilan selesai di laptop dan menunggu dikirim. Hasil terbukti lokal 40 dari 46 (87,0%)."
   },
   "ringkasan": "M7-2 (ats-40) dan M7-3 (ats-29/30/38) selesai. 36/46 hasil terbukti lokal. Berikutnya lead time & bottleneck (ats-22/23), GForm di Perlu tindakan (ats-28), Import Review (ats-17).",
   "yangBisaDitunjukkan": [
@@ -249,10 +249,10 @@
       "kelompok": "Fondasi & sync",
       "manfaat": "Cek hosting, database terpisah, login HR, biaya, akses dan pemulihan sebelum implementasi online.",
       "minggu": "W2 Okt 2026 · berjalan; target selesai belum ditetapkan",
-      "catatan": "25 Nov: tahap 4 dari 9 selesai. Website uji https://ats-uji.vercel.app masih ada dan tertutup tanpa login. Database uji sedang dijeda karena 7 hari tidak dipakai, jadi versi terbaru belum bisa dicek setelah login. Jalur kirim email sungguhan sudah dibangun dan diuji tanpa email keluar, masih terkunci. Koreksi: uji dua HR sebelumnya belum memakai dua login asli; sudah diulang 25 Nov dan lulus. UAT di akhir.",
+      "catatan": "25 Nov: tahap 4 dari 9 selesai. Website uji dicek setelah login: 11 halaman terbuka 1–3 detik, komentar tersimpan, email hanya ke kotak uji, akses dari luar tertutup. Tampilan HP halaman kandidat dan skor kosong sudah diperbaiki di laptop, belum dikirim ke website uji. UAT di akhir.",
       "bukti": [
-        "assets/ats19-20261117-web-uji-leadtime.png",
-        "assets/ats19-20261117-web-uji-email.png"
+        "assets/ats19-20261125-web-uji-email.png",
+        "assets/ats19-20261125-hp-kandidat.png"
       ]
     },
     {
@@ -640,8 +640,8 @@
     }
   ],
   "langkahBerikutnya": [
-    "Thisya: putuskan pengaktifan database uji.",
-    "Claude: kirim versi terbaru ke website uji dan cek setelah izin."
+    "Thisya: izinkan pengiriman perbaikan tampilan ke website uji.",
+    "Claude: kirim dan cek ulang."
   ],
   "pertanyaanAlur": ""
 }
